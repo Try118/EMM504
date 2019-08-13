@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+     
+<mapper namespace="com.yx.emm504.client.mapper.IClientMapper">
+
+	<resultMap id="ClientModelResultMap" type="com.yx.emm504.Model.ClientModel" > 
+		<id column="CLIENT_ID" property="client_id"/>       		     
+    	<result column="IDENTIFY_ID" property="identify_id"/>   
+    	<result column="PRODUCT_ID" property="product_id"/>
+    	<result column="REC_TIME" property="rec_time"/>   
+    	<result column="CLIENT_PROPERTY" property="client_property"/>   
+    	<result column="UNIT_NAME" property="unit_name"/>   
+    	<result column="PHONE_NUMBER" property="phone_number"/>   
+    	<result column="MOBILE_NUMBER" property="mobile_number"/>   
+    	<result column="CLIENT_ADDRESS" property="client_address"/>   
+    	<result column="ZIP_CODE" property="zip_code"/>   
+    	<result column="CONNECT_PEOPLE" property="connect_people"/>   
+    	<result column="EMAIL" property="email"/>         
+    </resultMap>
+
+	<select id="selectListByAll" resultMap="ClientModelResultMap">
+		select IDENTIFY_ID,PRODUCT_ID,REC_TIME,CLIENT_PROPERTY,UNIT_NAME,PHONE_NUMBER,MOBILE_NUMBER,CLIENT_ADDRESS,ZIP_CODE,CONNECT_PEOPLE,EMAIL from CLIENT_INFO 
+	</select>
+	
+</mapper>        
