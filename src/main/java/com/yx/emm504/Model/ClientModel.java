@@ -8,7 +8,6 @@ import lombok.Data;
 public class ClientModel {
 	private String client_id;//客户编号
 	private String identify_id;//身份证编号
-	private String product_id;//产品编号
 	private Date rec_time;//客户送机时间
 	private String client_property;//客户属性0123
 	private String unit_name;//单位名称

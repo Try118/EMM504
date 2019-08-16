@@ -8,7 +8,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<resultMap id="ClientModelResultMap" type="com.yx.emm504.Model.ClientModel" > 
 		<id column="CLIENT_ID" property="client_id"/>       		     
     	<result column="IDENTIFY_ID" property="identify_id"/>   
-    	<result column="PRODUCT_ID" property="product_id"/>
     	<result column="REC_TIME" property="rec_time"/>   
     	<result column="CLIENT_PROPERTY" property="client_property"/>   
     	<result column="UNIT_NAME" property="unit_name"/>   
@@ -21,10 +20,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </resultMap>
 
 	<select id="selectListByAll" resultMap="ClientModelResultMap">
-		select IDENTIFY_ID,PRODUCT_ID,REC_TIME,CLIENT_PROPERTY,UNIT_NAME,PHONE_NUMBER,MOBILE_NUMBER,CLIENT_ADDRESS,ZIP_CODE,CONNECT_PEOPLE,EMAIL from client_info
+		select IDENTIFY_ID,REC_TIME,CLIENT_PROPERTY,UNIT_NAME,PHONE_NUMBER,MOBILE_NUMBER,CLIENT_ADDRESS,ZIP_CODE,CONNECT_PEOPLE,EMAIL from client_info
 	</select>
 	
 	<insert id="create">
-		insert into client_info (CLIENT_ID,IDENTIFY_ID,PRODUCT_ID) values (#{client_id},#{identify_id},#{product_id}) 
+		insert into client_info (CLIENT_ID,IDENTIFY_ID) values (#{client_id},#{identify_id}) 
 	</insert>
 </mapper>        
