@@ -14,4 +14,6 @@ public interface IClientService {
 	public int getCountByAll() throws Exception;
 	
 	public int getPageCountByAll(int rows) throws Exception;
+	
+	public List<ClientModel> getListByAllWithPage(int rows,int page) throws Exception;
 }

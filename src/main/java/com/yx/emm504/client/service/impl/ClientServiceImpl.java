@@ -45,4 +45,14 @@ public class ClientServiceImpl implements IClientService {
 		}
 		return pageCount;
 	}
+
+	@Override
+	public List<ClientModel> getListByAllWithPage(int rows, int page) throws Exception {
+		return cd.selectListByAllWithPage(rows*(page-1), rows);
+	}
+
+	
+
+	
+	
 }

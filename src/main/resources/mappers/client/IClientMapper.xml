@@ -31,4 +31,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectCountByAll" resultType="int">
 		select IFNULL(count(client_id),0) from client_info
 	</select>
+	
+	<select id="selectListByAllWithPage" resultMap="ClientModelResultMap">
+		select * from client_info limit #{start},#{rows}
+	</select>
 </mapper>        

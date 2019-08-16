@@ -30,7 +30,10 @@ public class ClientController {
 		ResultMessage<ClientModel> rm=new ResultMessage<ClientModel>("OK","取得客户列表成功");
 		rm.setCount(cs.getCountByAll());
 		rm.setPageCount(cs.getPageCountByAll(rows));
-		System.out.println(cs.getPageCountByAll(rows));
+		rm.setList(cs.getListByAllWithPage(rows, page));
+		rm.setRows(rows);
+		rm.setPage(page);
+		//System.out.println(cs.getPageCountByAll(rows));
 		return rm;
 	}
 	
