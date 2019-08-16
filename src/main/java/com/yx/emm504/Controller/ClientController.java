@@ -25,14 +25,7 @@ public class ClientController {
 	}
 	
 	@RequestMapping("/create")
-	public void create(ClientModel cm) throws Exception{
-		/*
-		ClientModel cm=new ClientModel();
-		
-		cm.setClient_id("2");
-		cm.setIdentify_id("44054841648688");
-		cm.setProduct_id("13");
-		*/
+	public void create(ClientModel cm) throws Exception{		
 		cs.create(cm);
 	}
 }
