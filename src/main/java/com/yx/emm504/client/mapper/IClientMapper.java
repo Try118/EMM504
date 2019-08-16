@@ -18,4 +18,5 @@ public interface IClientMapper {
 	
 	public List<ClientModel> selectListByAllWithPage(@Param("start")int start,@Param("rows")int rows) throws Exception;
 	
+	public void delete(ClientModel cm) throws Exception;
 }

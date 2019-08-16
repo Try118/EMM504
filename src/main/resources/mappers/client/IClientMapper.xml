@@ -35,4 +35,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectListByAllWithPage" resultMap="ClientModelResultMap">
 		select * from client_info limit #{start},#{rows}
 	</select>
+	
+	<delete id="delete">
+		delete from client_info where CLIENT_ID = #{client_id}
+	</delete>
 </mapper>        

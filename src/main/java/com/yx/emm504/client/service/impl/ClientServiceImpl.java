@@ -51,8 +51,9 @@ public class ClientServiceImpl implements IClientService {
 		return cd.selectListByAllWithPage(rows*(page-1), rows);
 	}
 
-	
-
-	
+	@Override
+	public void delete(ClientModel cm) throws Exception {
+		cd.delete(cm);
+	}
 	
 }

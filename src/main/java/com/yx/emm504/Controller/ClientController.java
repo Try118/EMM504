@@ -37,8 +37,14 @@ public class ClientController {
 	}
 	
 	@RequestMapping("/create")
-	public ResultMessage create(ClientModel cm) throws Exception{		
+	public ResultMessage create(ClientModel cm) throws Exception{	
 		cs.create(cm);
 		return new ResultMessage("OK","注册成功");
+	}
+	
+	@RequestMapping("/delete")
+	public ResultMessage delete(ClientModel cm) throws Exception{
+		cs.delete(cm);
+		return new ResultMessage("OK","删除成功");
 	}
 }

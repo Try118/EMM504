@@ -16,4 +16,6 @@ public interface IClientService {
 	public int getPageCountByAll(int rows) throws Exception;
 	
 	public List<ClientModel> getListByAllWithPage(int rows,int page) throws Exception;
+	
+	public void delete(ClientModel cm) throws Exception;
 }

@@ -25,6 +25,7 @@ $(function(){
 		pager: "#ClientGridPager",
 		onSelectRow:function(client_id){
 			clientId=client_id;
+			//alert(clientId);
 		}
 	});
 });
