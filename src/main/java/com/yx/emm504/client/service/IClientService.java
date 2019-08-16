@@ -9,4 +9,5 @@ public interface IClientService {
 
 	public List<ClientModel> getListByAll() throws Exception;
 	
+	public void create(ClientModel cm) throws Exception;
 }

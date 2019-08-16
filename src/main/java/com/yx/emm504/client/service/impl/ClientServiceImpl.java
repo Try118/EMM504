@@ -24,5 +24,10 @@ public class ClientServiceImpl implements IClientService {
 		List<ClientModel> list=cd.selectListByAll();
 		return list;
 	}
+
+	@Override
+	public void create(ClientModel cm) throws Exception {
+		cd.create(cm);
+	}
 	
 }

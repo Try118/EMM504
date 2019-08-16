@@ -11,6 +11,6 @@ public interface IClientMapper {
 	
 	public List<ClientModel> selectListByAll() throws Exception;
 	
-	public void add(ClientModel cm) throws Exception;
+	public void create(ClientModel cm) throws Exception;
 	
 }

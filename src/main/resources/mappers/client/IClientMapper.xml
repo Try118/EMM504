@@ -24,4 +24,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select IDENTIFY_ID,PRODUCT_ID,REC_TIME,CLIENT_PROPERTY,UNIT_NAME,PHONE_NUMBER,MOBILE_NUMBER,CLIENT_ADDRESS,ZIP_CODE,CONNECT_PEOPLE,EMAIL from client_info
 	</select>
 	
+	<insert id="create">
+		insert into client_info (CLIENT_ID,IDENTIFY_ID,PRODUCT_ID) values (#{client_id},#{identify_id},#{product_id}) 
+	</insert>
 </mapper>        
