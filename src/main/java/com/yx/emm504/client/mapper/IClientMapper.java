@@ -13,4 +13,6 @@ public interface IClientMapper {
 	
 	public void create(ClientModel cm) throws Exception;
 	
+	public int selectCountByAll() throws Exception;
+	
 }

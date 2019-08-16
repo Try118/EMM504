@@ -26,4 +26,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="create">
 		insert into client_info (CLIENT_ID,IDENTIFY_ID) values (#{client_id},#{identify_id}) 
 	</insert>
+	
+	<!-- 取得客户的个数，使用IFNULL函数判断count函数结果是否为null, 为null返回0 -->
+	<select id="selectCountByAll" resultType="int">
+		select IFNULL(count(client_id),0) from client_info
+	</select>
 </mapper>        
