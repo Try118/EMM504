@@ -28,10 +28,21 @@ $(function(){
 			//alert(clientId);
 		}
 	});
+	
+	
+	//客户管理-删除
+	$("button#delete").off().on("click",function(){
+		if(clientId==null){
+			alert("请选择客户");
+		}else{
+			$.post("client/delete",{client_id:clientId},function(ResultMessage){
+				if(ResultMessage.status=="OK"){
+					alert("删除成功");
+				}
+			});
+		}
+	});
 });
-
-
-
 
 
 
@@ -82,5 +93,8 @@ $("button#add").off().on("click",function(){
 		});
 	});
 });
+
+
+
 
 
