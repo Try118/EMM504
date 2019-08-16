@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.yx.emm504.Model.ClientModel;
 import com.yx.emm504.client.service.IClientService;
+import com.yx.emm504.message.ResultMessage;
 
 @RequestMapping("/client")
 @RestController
@@ -25,7 +26,8 @@ public class ClientController {
 	}
 	
 	@RequestMapping("/create")
-	public void create(ClientModel cm) throws Exception{		
+	public ResultMessage create(ClientModel cm) throws Exception{		
 		cs.create(cm);
+		return new ResultMessage("OK","注册成功");
 	}
 }

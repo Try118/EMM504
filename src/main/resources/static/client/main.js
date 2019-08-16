@@ -10,8 +10,8 @@ $("button#add").off().on("click",function(){
 		});
 		
 		$(function(){
-			$("form#createForm").ajaxForm(function(){
-				alert("注册成功");
+			$("form#createForm").ajaxForm(function(ResultMessage){
+				alert(ResultMessage.message);
 			});
 		});
 	});
