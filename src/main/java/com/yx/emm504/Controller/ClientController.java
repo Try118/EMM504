@@ -33,7 +33,6 @@ public class ClientController {
 		rm.setList(cs.getListByAllWithPage(rows, page));
 		rm.setRows(rows);
 		rm.setPage(page);
-		//System.out.println(cs.getPageCountByAll(rows));
 		return rm;
 	}
 	

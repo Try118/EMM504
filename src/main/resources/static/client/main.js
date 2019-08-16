@@ -1,3 +1,40 @@
+//取得列表数据
+$(function(){	
+	var clientId=null;	
+	$("table#ClientGrid").jqGrid({
+		url: 'http://127.0.0.1:8080/client/getListByAllWithPage',
+		datatype: "json",
+		styleUI: "Bootstrap",
+		colModel: [
+			{ label: '客户编号', name: 'client_id',key:true, width: 90 },
+			{ label: '身份证号', name: 'identify_id', width: 90 },  
+		],
+
+		viewrecords: true, 
+		autowidth: true,
+		height: 400,
+		rowNum: 10,
+		rowList:[10,20,30],
+		jsonReader : { 
+		      root: "list", 
+		      page: "page", 
+		      total: "pageCount", 
+		      records: "count", 
+		      repeatitems: true, 
+		      id: "client_id"},
+		pager: "#ClientGridPager",
+		onSelectRow:function(client_id){
+			clientId=client_id;
+		}
+	});
+});
+
+
+
+
+
+
+
 //客户管理-注册
 $("button#add").off().on("click",function(){
 	$("div#dialog_client").load("client/add.html",function(){		
