@@ -55,5 +55,10 @@ public class ClientServiceImpl implements IClientService {
 	public void delete(ClientModel cm) throws Exception {
 		cd.delete(cm);
 	}
+
+	@Override
+	public ClientModel getByClientId(String client_id) throws Exception {
+		return cd.getByClientId(client_id);
+	}
 	
 }

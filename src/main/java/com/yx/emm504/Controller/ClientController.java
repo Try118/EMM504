@@ -47,4 +47,11 @@ public class ClientController {
 		cs.delete(cm);
 		return new ResultMessage("OK","删除成功");
 	}
+	
+	@RequestMapping("/getByClientId")
+	public ResultMessage getByClientId(String client_id) throws Exception{
+		ResultMessage<ClientModel> rm=new ResultMessage<ClientModel>("OK","获取客户信息成功");
+		rm.setModel(cs.getByClientId(client_id));
+		return rm;
+	}
 }

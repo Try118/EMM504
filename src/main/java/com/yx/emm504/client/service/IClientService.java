@@ -18,4 +18,6 @@ public interface IClientService {
 	public List<ClientModel> getListByAllWithPage(int rows,int page) throws Exception;
 	
 	public void delete(ClientModel cm) throws Exception;
+	
+	public ClientModel getByClientId(String client_id) throws Exception;
 }
