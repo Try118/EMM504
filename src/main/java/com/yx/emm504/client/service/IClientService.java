@@ -22,4 +22,6 @@ public interface IClientService {
 	public ClientModel getByClientId(String client_id) throws Exception;
 	
 	public void update(ClientModel cm) throws Exception;
+	
+	public List<ClientModel> getListByAddition(ClientModel cm) throws Exception;
 }

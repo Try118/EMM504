@@ -60,4 +60,14 @@ public class ClientController {
 		cs.update(cm);
 		return new ResultMessage<ClientModel>("OK","修改成功");
 	}
+	
+	
+	@RequestMapping("/getListByAddition")
+	public ResultMessage<ClientModel> getListByAddition(ClientModel cm) throws Exception{
+		ResultMessage<ClientModel> rm=new ResultMessage<ClientModel>("OK","修改成功");
+		rm.setList(cs.getListByAddition(cm));
+		return rm;
+	}
+	
+
 }

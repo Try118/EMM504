@@ -23,4 +23,6 @@ public interface IClientMapper {
 	public ClientModel getByClientId(String client_id) throws Exception;
 	
 	public void modify(ClientModel cm) throws Exception;
+	
+	public List<ClientModel> selectListByAddition(@Param("client_property")String client_property,@Param("zip_code")String zip_code) throws Exception;
 }

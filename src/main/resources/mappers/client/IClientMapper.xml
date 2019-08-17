@@ -49,4 +49,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="modify">
 		update client_info set IDENTIFY_ID=#{identify_id} where CLIENT_ID = #{client_id}
 	</update>
+	
+	<select id="selectListByAddition" resultMap="ClientModelResultMap">
+		select * from client_info
+		<where>
+			<if test="client_property!=null">
+				and CLIENT_PROPERTY = #{client_property}
+			</if>
+			<if test="zip_code!=null">
+				and ZIP_CODE = #{zip_code}
+			</if>
+		</where>
+	</select>
 </mapper>        
