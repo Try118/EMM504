@@ -5,10 +5,10 @@ $(function(){
 		datatype: "json",
 		styleUI: "Bootstrap",
 		colModel: [
-			{ label: '客户编号', name: 'client_id',key:true, width: 90 },
-			{ label: '身份证号', name: 'identify_id', width: 90 },  
+			{ label: '客户编号', name: 'client_id',key:true, width: 50 },
+			{ label: '身份证号', name: 'identify_id', width: 50 },  
+			{ label: '客户送机时间', name: 'rec_time', width: 50 },  
 		],
-
 		viewrecords: true, 
 		autowidth: true,
 		height: 400,
@@ -27,12 +27,12 @@ $(function(){
 			//alert(clientId);
 		}
 	});
-
+/*
 	function reloadList()
 	{
 		$("table#ClientGrid").jqGrid('setGridParam',{postData:{client_id:client_id,identify_id:identify_ide}}).trigger("reloadGrid");		
 	}
-
+*/
 
 	//客户管理-删除
 	$("button#delete").off().on("click",function(){
@@ -46,7 +46,6 @@ $(function(){
 			});
 		}
 	});
-
 	//客户管理-修改
 	$("button#update").off().on("click",function(){
 		if(clientId==null){
@@ -91,8 +90,7 @@ $(function(){
 					width:750			
 				});
 			});		
-			//验证数据
-			
+			//验证数据			
 			$(function(){
 				$("form#createForm").validate({
 					rules:{
