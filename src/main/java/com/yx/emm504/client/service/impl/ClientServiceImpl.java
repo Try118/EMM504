@@ -60,5 +60,10 @@ public class ClientServiceImpl implements IClientService {
 	public ClientModel getByClientId(String client_id) throws Exception {
 		return cd.getByClientId(client_id);
 	}
+
+	@Override
+	public void update(ClientModel cm) throws Exception {
+		cd.modify(cm);
+	}
 	
 }

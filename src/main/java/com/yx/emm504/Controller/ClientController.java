@@ -37,21 +37,27 @@ public class ClientController {
 	}
 	
 	@RequestMapping("/create")
-	public ResultMessage create(ClientModel cm) throws Exception{	
+	public ResultMessage<ClientModel> create(ClientModel cm) throws Exception{	
 		cs.create(cm);
-		return new ResultMessage("OK","注册成功");
+		return new ResultMessage<ClientModel>("OK","注册成功");
 	}
 	
 	@RequestMapping("/delete")
-	public ResultMessage delete(ClientModel cm) throws Exception{
+	public ResultMessage<ClientModel> delete(ClientModel cm) throws Exception{
 		cs.delete(cm);
-		return new ResultMessage("OK","删除成功");
+		return new ResultMessage<ClientModel>("OK","删除成功");
 	}
 	
 	@RequestMapping("/getByClientId")
-	public ResultMessage getByClientId(String client_id) throws Exception{
+	public ResultMessage<ClientModel> getByClientId(String client_id) throws Exception{
 		ResultMessage<ClientModel> rm=new ResultMessage<ClientModel>("OK","获取客户信息成功");
 		rm.setModel(cs.getByClientId(client_id));
 		return rm;
+	}
+	
+	@RequestMapping("/update")
+	public ResultMessage<ClientModel> update(ClientModel cm) throws Exception{
+		cs.update(cm);
+		return new ResultMessage<ClientModel>("OK","修改成功");
 	}
 }

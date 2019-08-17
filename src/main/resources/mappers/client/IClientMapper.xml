@@ -43,4 +43,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getByClientId" resultMap="ClientModelResultMap">
 		select * from client_info where CLIENT_ID = #{client_id}
 	</select>
+	
+	<update id="modify">
+		update client_info set IDENTIFY_ID=#{identify_id} where CLIENT_ID = #{client_id}
+	</update>
 </mapper>        

@@ -42,9 +42,42 @@ $(function(){
 			});
 		}
 	});
+	
+	//客户管理-修改
+	$("button#update").off().on("click",function(){
+		if(clientId==null){
+			alert("请选择客户");
+		}else{
+			$.post("client/getByClientId",{client_id:clientId},function(ResultMessage){
+				if(ResultMessage.status=="OK"){
+					//alert(ResultMessage.message);					
+					$("div#dialog_client").load("client/update.html",function(){
+						$(function(){
+							$("div#dialog_client").dialog({
+								title:"客户管理-修改",
+								width:750			
+							});
+						});
+						$("input[name='client_id']").val(ResultMessage.model.client_id);
+						$("input[name='identify_id']").val(ResultMessage.model.identify_id);
+						$(function(){
+							$("form#updateForm").ajaxForm(function(ResultMessage){
+								if(ResultMessage.status=="OK"){
+									alert("修改客户成功");
+								}else{
+									alert("修改客户失败");
+								}
+								$("div#dialog_client").dialog("close");
+								$("div#dialog_client").dialog("destory");
+								$("div#dialog_client").html("");
+							});
+						});
+					});					
+				}
+			});
+		}
+	});
 });
-
-
 
 
 //客户管理-注册

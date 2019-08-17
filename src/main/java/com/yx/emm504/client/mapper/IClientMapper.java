@@ -21,4 +21,6 @@ public interface IClientMapper {
 	public void delete(ClientModel cm) throws Exception;
 	
 	public ClientModel getByClientId(String client_id) throws Exception;
+	
+	public void modify(ClientModel cm) throws Exception;
 }
