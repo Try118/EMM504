@@ -24,7 +24,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="create">
-		insert into client_info (CLIENT_ID,IDENTIFY_ID,REC_TIME) values (#{client_id},#{identify_id},#{rec_time}) 
+		insert into client_info (CLIENT_ID,IDENTIFY_ID,REC_TIME,CLIENT_PROPERTY,UNIT_NAME,PHONE_NUMBER,MOBILE_NUMBER,CLIENT_ADDRESS,ZIP_CODE,CONNECT_PEOPLE,EMAIL) 
+		values 
+		(#{client_id},#{identify_id},#{rec_time},#{client_property},#{unit_name},#{phone_number},#{mobile_number},#{client_address},#{zip_code},#{connect_people},#{email}) 
 	</insert>
 	
 	<!-- 取得客户的个数，使用IFNULL函数判断count函数结果是否为null, 为null返回0 -->
