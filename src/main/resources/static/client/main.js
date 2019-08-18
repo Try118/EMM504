@@ -35,12 +35,12 @@ $(function(){
 			//alert(clientId);
 		}
 	});
-/*
+
 	function reloadList()
 	{
-		$("table#ClientGrid").jqGrid('setGridParam',{postData:{client_id:client_id,identify_id:identify_ide}}).trigger("reloadGrid");		
+		$("table#ClientGrid").trigger("reloadGrid");		
 	}
-*/
+
 
 	//客户管理-删除
 	$("button#delete").off().on("click",function(){
@@ -49,7 +49,8 @@ $(function(){
 		}else{
 			$.post("client/delete",{client_id:clientId},function(ResultMessage){
 				if(ResultMessage.status=="OK"){
-					alert("删除成功");
+					alert(ResultMessage.message);
+					reloadList();
 				}
 			});
 		}
@@ -74,7 +75,9 @@ $(function(){
 						$(function(){
 							$("form#updateForm").ajaxForm(function(ResultMessage){
 								if(ResultMessage.status=="OK"){
-									alert("修改客户成功");
+									alert(ResultMessage.message);
+									//刷新List
+									reloadList();
 								}else{
 									alert("修改客户失败");
 								}
@@ -123,6 +126,7 @@ $(function(){
 			$(function(){
 				$("form#createForm").ajaxForm(function(ResultMessage){
 					alert(ResultMessage.message);
+					reloadList();
 	//				BootstrapDialog.show({
 	//					title:'客户管理',
 	//					message:'sadada'
