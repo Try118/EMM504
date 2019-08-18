@@ -70,5 +70,10 @@ public class ClientServiceImpl implements IClientService {
 	public List<ClientModel> getListByAddition(ClientModel cm) throws Exception {
 		return cd.selectListByAddition(cm.getClient_property(),cm.getZip_code());
 	}
+
+	@Override
+	public List<ClientModel> getZipCode() throws Exception {
+		return cd.selectZipCode();
+	}
 	
 }

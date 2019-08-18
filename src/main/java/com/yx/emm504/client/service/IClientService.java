@@ -24,4 +24,6 @@ public interface IClientService {
 	public void update(ClientModel cm) throws Exception;
 	
 	public List<ClientModel> getListByAddition(ClientModel cm) throws Exception;
+	
+	public List<ClientModel> getZipCode() throws Exception;
 }

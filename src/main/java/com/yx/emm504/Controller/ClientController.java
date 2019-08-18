@@ -20,9 +20,10 @@ public class ClientController {
 	private IClientService cs;
 	
 	@RequestMapping("/getListByAll")
-	public List<ClientModel> getListByAll() throws Exception{
-		List<ClientModel> list=cs.getListByAll();
-		return list;
+	public ResultMessage<ClientModel> getListByAll() throws Exception{
+		ResultMessage<ClientModel> rm=new ResultMessage<ClientModel>("OK","获取客户信息成功");
+		rm.setList(cs.getListByAll());
+		return rm;
 	}
 	
 	@RequestMapping("/getListByAllWithPage")
@@ -61,13 +62,20 @@ public class ClientController {
 		return new ResultMessage<ClientModel>("OK","修改成功");
 	}
 	
+	@RequestMapping("/getZipCode")
+	public ResultMessage<ClientModel> getZipCode() throws Exception{
+		ResultMessage<ClientModel> rm=new ResultMessage<ClientModel>("OK","获取邮编成功");
+		rm.setList(cs.getZipCode());
+		return rm;
+	}
 	
+/*	
 	@RequestMapping("/getListByAddition")
 	public ResultMessage<ClientModel> getListByAddition(ClientModel cm) throws Exception{
 		ResultMessage<ClientModel> rm=new ResultMessage<ClientModel>("OK","修改成功");
 		rm.setList(cs.getListByAddition(cm));
 		return rm;
 	}
-	
+*/	
 
 }

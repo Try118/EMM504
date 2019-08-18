@@ -141,13 +141,36 @@ $(function(){
 		});
 	});
 	
+	//填充邮编下拉框
+	$.post("client/getZipCode",function(ResultMessage){
+		if(ResultMessage.status=="OK"){
+			//alert(ResultMessage.message);
+			var list = ResultMessage.list;
+			if(list){
+				$.each(list,function(index,cm){
+					$("div#div_zip_code").append("<a class='dropdown-item' href='#' id='"+cm.zip_code+"'>"+cm.zip_code+"</a>");
+					//下拉框选择邮编
+					$("div#div_zip_code a").off().on("click",function(){
+						zip_code = $(this).attr("id");
+						//reloadList();
+					});
+				});
+			}
+		}
+	});
 	
-		$("div#div_zip_code a").off().on("click",function(){
-			client_property = $(this).attr("id");
-			alert(client_property);
-			reloadList();
-		});
+		
+	//下拉框选择客户属性
+	$("div#div_client_property a").off().on("click",function(){
+		client_property = $(this).attr("id");
+		//alert(client_property);
+		//reloadList();
+	});
 	
+	//查询按钮
+	$("button#btn_select").off().on("click",function(){
+		reloadList();
+	});
 });
 
 

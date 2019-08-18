@@ -20,7 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </resultMap>
 
 	<select id="selectListByAll" resultMap="ClientModelResultMap">
-		select IDENTIFY_ID,REC_TIME,CLIENT_PROPERTY,UNIT_NAME,PHONE_NUMBER,MOBILE_NUMBER,CLIENT_ADDRESS,ZIP_CODE,CONNECT_PEOPLE,EMAIL from client_info
+		select * from client_info
 	</select>
 	
 	<insert id="create">
@@ -77,5 +77,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				and ZIP_CODE = #{zip_code}
 			</if>
 		</where>
+	</select>
+	
+	
+	<select	id="selectZipCode" resultMap="ClientModelResultMap">
+		select distinct(zip_code) from client_info where zip_code != ''
 	</select>
 </mapper>        
