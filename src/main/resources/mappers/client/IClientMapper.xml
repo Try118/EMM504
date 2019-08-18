@@ -32,10 +32,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 取得客户的个数，使用IFNULL函数判断count函数结果是否为null, 为null返回0 -->
 	<select id="selectCountByAll" resultType="int">
 		select IFNULL(count(client_id),0) from client_info
+		<where>
+			<if test="client_property!=null">
+				and CLIENT_PROPERTY = #{client_property}
+			</if>
+			<if test="zip_code!=null">
+				and ZIP_CODE = #{zip_code}
+			</if>
+		</where>
 	</select>
 	
 	<select id="selectListByAllWithPage" resultMap="ClientModelResultMap">
-		select * from client_info limit #{start},#{rows}
+		select * from client_info 
+		<where>
+			<if test="zip_code!=''">
+				and ZIP_CODE = #{zip_code}
+			</if>
+			<if test="client_property!=''">
+				and CLIENT_PROPERTY = #{client_property}
+			</if>
+		</where>
+		limit #{start},#{rows}
 	</select>
 	
 	<delete id="delete">
@@ -53,10 +70,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectListByAddition" resultMap="ClientModelResultMap">
 		select * from client_info
 		<where>
-			<if test="client_property!=null">
+			<if test="client_property!=null and client_property!=''">
 				and CLIENT_PROPERTY = #{client_property}
 			</if>
-			<if test="zip_code!=null">
+			<if test="zip_code!=null and zip_code!=''">
 				and ZIP_CODE = #{zip_code}
 			</if>
 		</where>

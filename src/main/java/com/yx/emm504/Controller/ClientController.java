@@ -26,11 +26,11 @@ public class ClientController {
 	}
 	
 	@RequestMapping("/getListByAllWithPage")
-	public ResultMessage<ClientModel> getListByAllWithPage(@RequestParam(required = false,defaultValue ="10") int rows,@RequestParam(required = false,defaultValue = "1") int page) throws Exception{
+	public ResultMessage<ClientModel> getListByAllWithPage(@RequestParam(required = false,defaultValue ="10") int rows,@RequestParam(required = false,defaultValue = "1") int page,@RequestParam(required = false,defaultValue ="")String zip_code,@RequestParam(required = false,defaultValue ="")String client_property) throws Exception{
 		ResultMessage<ClientModel> rm=new ResultMessage<ClientModel>("OK","取得客户列表成功");
-		rm.setCount(cs.getCountByAll());
-		rm.setPageCount(cs.getPageCountByAll(rows));
-		rm.setList(cs.getListByAllWithPage(rows, page));
+		rm.setCount(cs.getCountByAll(zip_code,client_property));
+		rm.setPageCount(cs.getPageCountByAll(rows,zip_code,client_property));
+		rm.setList(cs.getListByAllWithPage(rows, page,zip_code,client_property));
 		rm.setRows(rows);
 		rm.setPage(page);
 		return rm;

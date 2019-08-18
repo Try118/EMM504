@@ -14,9 +14,9 @@ public interface IClientMapper {
 	
 	public void create(ClientModel cm) throws Exception;
 	
-	public int selectCountByAll() throws Exception;
+	public int selectCountByAll(String zip_code,String client_property) throws Exception;
 	
-	public List<ClientModel> selectListByAllWithPage(@Param("start")int start,@Param("rows")int rows) throws Exception;
+	public List<ClientModel> selectListByAllWithPage(@Param("start")int start,@Param("rows")int rows,@Param("zip_code")String zip_code,@Param("client_property")String client_property) throws Exception;
 	
 	public void delete(ClientModel cm) throws Exception;
 	

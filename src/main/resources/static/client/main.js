@@ -1,5 +1,7 @@
 $(function(){	
 	var clientId=null;		
+	var zip_code=null;
+	var client_property=null;
 	$("table#ClientGrid").jqGrid({
 		url: 'http://127.0.0.1:8080/client/getListByAllWithPage',
 		datatype: "json",
@@ -38,7 +40,7 @@ $(function(){
 
 	function reloadList()
 	{
-		$("table#ClientGrid").trigger("reloadGrid");		
+		$("table#ClientGrid").jqGrid('setGridParam',{postData:{zip_code:zip_code,client_property:client_property}}).trigger("reloadGrid");
 	}
 
 
@@ -138,6 +140,14 @@ $(function(){
 			});
 		});
 	});
+	
+	
+		$("div#div_zip_code a").off().on("click",function(){
+			client_property = $(this).attr("id");
+			alert(client_property);
+			reloadList();
+		});
+	
 });
 
 

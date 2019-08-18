@@ -30,14 +30,14 @@ public class ClientServiceImpl implements IClientService {
 	}
 
 	@Override
-	public int getCountByAll() throws Exception {
-		return cd.selectCountByAll();
+	public int getCountByAll(String zip_code,String client_property) throws Exception {
+		return cd.selectCountByAll(zip_code,client_property);
 	}
 
 	@Override
-	public int getPageCountByAll(int rows) throws Exception {
+	public int getPageCountByAll(int rows,String zip_code,String client_property) throws Exception {
 		int pageCount = 0;
-		int count = this.getCountByAll();
+		int count = this.getCountByAll(zip_code,client_property);
 		if (count % rows == 0) {
 			pageCount = count / rows;
 		} else {
@@ -47,8 +47,8 @@ public class ClientServiceImpl implements IClientService {
 	}
 
 	@Override
-	public List<ClientModel> getListByAllWithPage(int rows, int page) throws Exception {
-		return cd.selectListByAllWithPage(rows*(page-1), rows);
+	public List<ClientModel> getListByAllWithPage(int rows, int page,String zip_code,String client_property) throws Exception {
+		return cd.selectListByAllWithPage(rows*(page-1), rows,zip_code,client_property);
 	}
 
 	@Override

@@ -11,11 +11,11 @@ public interface IClientService {
 	
 	public void create(ClientModel cm) throws Exception;
 	
-	public int getCountByAll() throws Exception;
+	public int getCountByAll(String zip_code,String client_property) throws Exception;
 	
-	public int getPageCountByAll(int rows) throws Exception;
+	public int getPageCountByAll(int rows,String zip_code,String client_property) throws Exception;
 	
-	public List<ClientModel> getListByAllWithPage(int rows,int page) throws Exception;
+	public List<ClientModel> getListByAllWithPage(int rows,int page,String zip_code,String client_property) throws Exception;
 	
 	public void delete(ClientModel cm) throws Exception;
 	
