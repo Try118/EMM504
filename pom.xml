@@ -52,38 +52,39 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
 			<!--mybatis 自动生成器-->
-			<!--            <plugin>-->
-			<!--                <groupId>org.mybatis.generator</groupId>-->
-			<!--                <artifactId>mybatis-generator-maven-plugin</artifactId>-->
-			<!--                <version>1.3.2</version>-->
-			<!--                <configuration>-->
-			<!--                    <verbose>true</verbose>-->
-			<!--                    <overwrite>true</overwrite>-->
-			<!--                    &lt;!&ndash; 此处指明在src/main/resources目录中已经创建过的mybatis-generator.xml文件的路径 &ndash;&gt;-->
-			<!--                    <configurationFile>src\main\resources\mybatis-generator\generatorConfig.xml</configurationFile>-->
-			<!--                </configuration>-->
-			<!--                <executions>-->
-			<!--                    <execution>-->
-			<!--                        <id>Generate MyBatis Artifacts</id>-->
-			<!--                        <goals>-->
-			<!--                            <goal>generate</goal>-->
-			<!--                        </goals>-->
-			<!--                        <phase>generate-sources</phase>-->
-			<!--                    </execution>-->
-			<!--                </executions>-->
+<!--			<plugin>-->
+<!--				<groupId>org.mybatis.generator</groupId>-->
+<!--				<artifactId>mybatis-generator-maven-plugin</artifactId>-->
+<!--				<version>1.3.2</version>-->
+<!--				<configuration>-->
+<!--					<verbose>true</verbose>-->
+<!--					<overwrite>true</overwrite>-->
+<!--					&lt;!&ndash; 此处指明在src/main/resources目录中已经创建过的mybatis-generator.xml文件的路径 &ndash;&gt;-->
+<!--					<configurationFile>src\main\resources\mybatis-generator\generatorConfig.xml</configurationFile>-->
+<!--				</configuration>-->
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<id>Generate MyBatis Artifacts</id>-->
+<!--						<goals>-->
+<!--							<goal>generate</goal>-->
+<!--						</goals>-->
+<!--						<phase>generate-sources</phase>-->
+<!--					</execution>-->
+<!--				</executions>-->
 
-			<!--                &lt;!&ndash;此处必须添加mysql驱动包&ndash;&gt;-->
-			<!--                &lt;!&ndash; 加载此mysql驱动包，可以忽略在自定义的generatorConfig.xml文件配置数据库驱动jar包的真实路径，即<classPathEntry location="mysql-connector-java-5.1.47.jar的本机路径"/>&ndash;&gt;-->
-			<!--                <dependencies>-->
-			<!--                    <dependency>-->
-			<!--                        <groupId>mysql</groupId>-->
-			<!--                        <artifactId>mysql-connector-java</artifactId>-->
-			<!--                        <version>8.0.16</version>-->
-			<!--                    </dependency>-->
-			<!--                </dependencies>-->
+<!--				&lt;!&ndash;此处必须添加mysql驱动包&ndash;&gt;-->
+<!--				&lt;!&ndash; 加载此mysql驱动包，可以忽略在自定义的generatorConfig.xml文件配置数据库驱动jar包的真实路径，即<classPathEntry location="mysql-connector-java-5.1.47.jar的本机路径"/>&ndash;&gt;-->
+<!--				<dependencies>-->
+<!--					<dependency>-->
+<!--						<groupId>mysql</groupId>-->
+<!--						<artifactId>mysql-connector-java</artifactId>-->
+<!--						<version>8.0.16</version>-->
+<!--					</dependency>-->
+<!--				</dependencies>-->
 
-			<!--            </plugin>-->
+<!--			</plugin>-->
 		</plugins>
 	</build>
 

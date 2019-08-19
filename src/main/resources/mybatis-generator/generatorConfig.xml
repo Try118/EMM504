@@ -51,8 +51,9 @@
         </commentGenerator>
 
         <!-- jdbc连接 -->
-        <jdbcConnection driverClass="${jdbc_driver}" connectionURL="${jdbc_url}" userId="${jdbc_user}" password="${jdbc_password}" />
-
+        <jdbcConnection driverClass="${jdbc_driver}" connectionURL="${jdbc_url}" userId="${jdbc_user}" password="${jdbc_password}">
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
         <!-- 类型转换 -->
         <javaTypeResolver>
             <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，
@@ -69,7 +70,7 @@
         </javaModelGenerator>
 
         <!-- 生成 mapxml 文件 -->
-        <sqlMapGenerator targetPackage="mapper" targetProject="${resources}">
+        <sqlMapGenerator targetPackage="mappers.productor" targetProject="${resources}">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 

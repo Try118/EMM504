@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yx.emm504.product.mapper.ProductInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.yx.emm504.Model.product.ProductInfo" >
+    <id column="PRODUCT_ID" property="productId" jdbcType="VARCHAR" />
+    <result column="CLIENT_ID" property="clientId" jdbcType="VARCHAR" />
+    <result column="PRODUCT_TYPE" property="productType" jdbcType="VARCHAR" />
+    <result column="MACHINE_RANK" property="machineRank" jdbcType="VARCHAR" />
+    <result column="MACHINE_MODEL" property="machineModel" jdbcType="VARCHAR" />
+    <result column="SERIAL_NUM" property="serialNum" jdbcType="VARCHAR" />
+    <result column="SHORTAGE_PART" property="shortagePart" jdbcType="VARCHAR" />
+    <result column="HDD" property="hdd" jdbcType="VARCHAR" />
+    <result column="MEMORY" property="memory" jdbcType="VARCHAR" />
+    <result column="PC_CARD" property="pcCard" jdbcType="VARCHAR" />
+    <result column="AC_ADAPTER" property="acAdapter" jdbcType="VARCHAR" />
+    <result column="CELL" property="cell" jdbcType="VARCHAR" />
+    <result column="CD_ROM" property="cdRom" jdbcType="VARCHAR" />
+    <result column="FD" property="fd" jdbcType="VARCHAR" />
+    <result column="START_PASSWORD" property="startPassword" jdbcType="VARCHAR" />
+    <result column="IMPORT_DATA" property="importData" jdbcType="VARCHAR" />
+    <result column="OTHER" property="other" jdbcType="VARCHAR" />
+    <result column="MACHINE_FAULT" property="machineFault" jdbcType="VARCHAR" />
+    <result column="FAULT_TYPE" property="faultType" jdbcType="CHAR" />
+    <result column="OUTER_CHECK" property="outerCheck" jdbcType="VARCHAR" />
+    <result column="BOOK_PRICE" property="bookPrice" jdbcType="INTEGER" />
+    <result column="RCV_DATE" property="rcvDate" jdbcType="DATE" />
+    <result column="LOGIN_STATUS" property="loginStatus" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    PRODUCT_ID, CLIENT_ID, PRODUCT_TYPE, MACHINE_RANK, MACHINE_MODEL, SERIAL_NUM, SHORTAGE_PART, 
+    HDD, MEMORY, PC_CARD, AC_ADAPTER, CELL, CD_ROM, FD, START_PASSWORD, IMPORT_DATA, 
+    OTHER, MACHINE_FAULT, FAULT_TYPE, OUTER_CHECK, BOOK_PRICE, RCV_DATE, LOGIN_STATUS
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from PRODUCT_INFO
+    where PRODUCT_ID = #{productId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from PRODUCT_INFO
+    where PRODUCT_ID = #{productId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yx.emm504.Model.product.ProductInfo" >
+    insert into PRODUCT_INFO (PRODUCT_ID, CLIENT_ID, PRODUCT_TYPE, 
+      MACHINE_RANK, MACHINE_MODEL, SERIAL_NUM, 
+      SHORTAGE_PART, HDD, MEMORY, 
+      PC_CARD, AC_ADAPTER, CELL, 
+      CD_ROM, FD, START_PASSWORD, 
+      IMPORT_DATA, OTHER, MACHINE_FAULT, 
+      FAULT_TYPE, OUTER_CHECK, BOOK_PRICE, 
+      RCV_DATE, LOGIN_STATUS)
+    values (#{productId,jdbcType=VARCHAR}, #{clientId,jdbcType=VARCHAR}, #{productType,jdbcType=VARCHAR}, 
+      #{machineRank,jdbcType=VARCHAR}, #{machineModel,jdbcType=VARCHAR}, #{serialNum,jdbcType=VARCHAR}, 
+      #{shortagePart,jdbcType=VARCHAR}, #{hdd,jdbcType=VARCHAR}, #{memory,jdbcType=VARCHAR}, 
+      #{pcCard,jdbcType=VARCHAR}, #{acAdapter,jdbcType=VARCHAR}, #{cell,jdbcType=VARCHAR}, 
+      #{cdRom,jdbcType=VARCHAR}, #{fd,jdbcType=VARCHAR}, #{startPassword,jdbcType=VARCHAR}, 
+      #{importData,jdbcType=VARCHAR}, #{other,jdbcType=VARCHAR}, #{machineFault,jdbcType=VARCHAR}, 
+      #{faultType,jdbcType=CHAR}, #{outerCheck,jdbcType=VARCHAR}, #{bookPrice,jdbcType=INTEGER}, 
+      #{rcvDate,jdbcType=DATE}, #{loginStatus,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yx.emm504.Model.product.ProductInfo" >
+    insert into PRODUCT_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="productId != null" >
+        PRODUCT_ID,
+      </if>
+      <if test="clientId != null" >
+        CLIENT_ID,
+      </if>
+      <if test="productType != null" >
+        PRODUCT_TYPE,
+      </if>
+      <if test="machineRank != null" >
+        MACHINE_RANK,
+      </if>
+      <if test="machineModel != null" >
+        MACHINE_MODEL,
+      </if>
+      <if test="serialNum != null" >
+        SERIAL_NUM,
+      </if>
+      <if test="shortagePart != null" >
+        SHORTAGE_PART,
+      </if>
+      <if test="hdd != null" >
+        HDD,
+      </if>
+      <if test="memory != null" >
+        MEMORY,
+      </if>
+      <if test="pcCard != null" >
+        PC_CARD,
+      </if>
+      <if test="acAdapter != null" >
+        AC_ADAPTER,
+      </if>
+      <if test="cell != null" >
+        CELL,
+      </if>
+      <if test="cdRom != null" >
+        CD_ROM,
+      </if>
+      <if test="fd != null" >
+        FD,
+      </if>
+      <if test="startPassword != null" >
+        START_PASSWORD,
+      </if>
+      <if test="importData != null" >
+        IMPORT_DATA,
+      </if>
+      <if test="other != null" >
+        OTHER,
+      </if>
+      <if test="machineFault != null" >
+        MACHINE_FAULT,
+      </if>
+      <if test="faultType != null" >
+        FAULT_TYPE,
+      </if>
+      <if test="outerCheck != null" >
+        OUTER_CHECK,
+      </if>
+      <if test="bookPrice != null" >
+        BOOK_PRICE,
+      </if>
+      <if test="rcvDate != null" >
+        RCV_DATE,
+      </if>
+      <if test="loginStatus != null" >
+        LOGIN_STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="productId != null" >
+        #{productId,jdbcType=VARCHAR},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=VARCHAR},
+      </if>
+      <if test="productType != null" >
+        #{productType,jdbcType=VARCHAR},
+      </if>
+      <if test="machineRank != null" >
+        #{machineRank,jdbcType=VARCHAR},
+      </if>
+      <if test="machineModel != null" >
+        #{machineModel,jdbcType=VARCHAR},
+      </if>
+      <if test="serialNum != null" >
+        #{serialNum,jdbcType=VARCHAR},
+      </if>
+      <if test="shortagePart != null" >
+        #{shortagePart,jdbcType=VARCHAR},
+      </if>
+      <if test="hdd != null" >
+        #{hdd,jdbcType=VARCHAR},
+      </if>
+      <if test="memory != null" >
+        #{memory,jdbcType=VARCHAR},
+      </if>
+      <if test="pcCard != null" >
+        #{pcCard,jdbcType=VARCHAR},
+      </if>
+      <if test="acAdapter != null" >
+        #{acAdapter,jdbcType=VARCHAR},
+      </if>
+      <if test="cell != null" >
+        #{cell,jdbcType=VARCHAR},
+      </if>
+      <if test="cdRom != null" >
+        #{cdRom,jdbcType=VARCHAR},
+      </if>
+      <if test="fd != null" >
+        #{fd,jdbcType=VARCHAR},
+      </if>
+      <if test="startPassword != null" >
+        #{startPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="importData != null" >
+        #{importData,jdbcType=VARCHAR},
+      </if>
+      <if test="other != null" >
+        #{other,jdbcType=VARCHAR},
+      </if>
+      <if test="machineFault != null" >
+        #{machineFault,jdbcType=VARCHAR},
+      </if>
+      <if test="faultType != null" >
+        #{faultType,jdbcType=CHAR},
+      </if>
+      <if test="outerCheck != null" >
+        #{outerCheck,jdbcType=VARCHAR},
+      </if>
+      <if test="bookPrice != null" >
+        #{bookPrice,jdbcType=INTEGER},
+      </if>
+      <if test="rcvDate != null" >
+        #{rcvDate,jdbcType=DATE},
+      </if>
+      <if test="loginStatus != null" >
+        #{loginStatus,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yx.emm504.Model.product.ProductInfo" >
+    update PRODUCT_INFO
+    <set >
+      <if test="clientId != null" >
+        CLIENT_ID = #{clientId,jdbcType=VARCHAR},
+      </if>
+      <if test="productType != null" >
+        PRODUCT_TYPE = #{productType,jdbcType=VARCHAR},
+      </if>
+      <if test="machineRank != null" >
+        MACHINE_RANK = #{machineRank,jdbcType=VARCHAR},
+      </if>
+      <if test="machineModel != null" >
+        MACHINE_MODEL = #{machineModel,jdbcType=VARCHAR},
+      </if>
+      <if test="serialNum != null" >
+        SERIAL_NUM = #{serialNum,jdbcType=VARCHAR},
+      </if>
+      <if test="shortagePart != null" >
+        SHORTAGE_PART = #{shortagePart,jdbcType=VARCHAR},
+      </if>
+      <if test="hdd != null" >
+        HDD = #{hdd,jdbcType=VARCHAR},
+      </if>
+      <if test="memory != null" >
+        MEMORY = #{memory,jdbcType=VARCHAR},
+      </if>
+      <if test="pcCard != null" >
+        PC_CARD = #{pcCard,jdbcType=VARCHAR},
+      </if>
+      <if test="acAdapter != null" >
+        AC_ADAPTER = #{acAdapter,jdbcType=VARCHAR},
+      </if>
+      <if test="cell != null" >
+        CELL = #{cell,jdbcType=VARCHAR},
+      </if>
+      <if test="cdRom != null" >
+        CD_ROM = #{cdRom,jdbcType=VARCHAR},
+      </if>
+      <if test="fd != null" >
+        FD = #{fd,jdbcType=VARCHAR},
+      </if>
+      <if test="startPassword != null" >
+        START_PASSWORD = #{startPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="importData != null" >
+        IMPORT_DATA = #{importData,jdbcType=VARCHAR},
+      </if>
+      <if test="other != null" >
+        OTHER = #{other,jdbcType=VARCHAR},
+      </if>
+      <if test="machineFault != null" >
+        MACHINE_FAULT = #{machineFault,jdbcType=VARCHAR},
+      </if>
+      <if test="faultType != null" >
+        FAULT_TYPE = #{faultType,jdbcType=CHAR},
+      </if>
+      <if test="outerCheck != null" >
+        OUTER_CHECK = #{outerCheck,jdbcType=VARCHAR},
+      </if>
+      <if test="bookPrice != null" >
+        BOOK_PRICE = #{bookPrice,jdbcType=INTEGER},
+      </if>
+      <if test="rcvDate != null" >
+        RCV_DATE = #{rcvDate,jdbcType=DATE},
+      </if>
+      <if test="loginStatus != null" >
+        LOGIN_STATUS = #{loginStatus,jdbcType=CHAR},
+      </if>
+    </set>
+    where PRODUCT_ID = #{productId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yx.emm504.Model.product.ProductInfo" >
+    update PRODUCT_INFO
+    set CLIENT_ID = #{clientId,jdbcType=VARCHAR},
+      PRODUCT_TYPE = #{productType,jdbcType=VARCHAR},
+      MACHINE_RANK = #{machineRank,jdbcType=VARCHAR},
+      MACHINE_MODEL = #{machineModel,jdbcType=VARCHAR},
+      SERIAL_NUM = #{serialNum,jdbcType=VARCHAR},
+      SHORTAGE_PART = #{shortagePart,jdbcType=VARCHAR},
+      HDD = #{hdd,jdbcType=VARCHAR},
+      MEMORY = #{memory,jdbcType=VARCHAR},
+      PC_CARD = #{pcCard,jdbcType=VARCHAR},
+      AC_ADAPTER = #{acAdapter,jdbcType=VARCHAR},
+      CELL = #{cell,jdbcType=VARCHAR},
+      CD_ROM = #{cdRom,jdbcType=VARCHAR},
+      FD = #{fd,jdbcType=VARCHAR},
+      START_PASSWORD = #{startPassword,jdbcType=VARCHAR},
+      IMPORT_DATA = #{importData,jdbcType=VARCHAR},
+      OTHER = #{other,jdbcType=VARCHAR},
+      MACHINE_FAULT = #{machineFault,jdbcType=VARCHAR},
+      FAULT_TYPE = #{faultType,jdbcType=CHAR},
+      OUTER_CHECK = #{outerCheck,jdbcType=VARCHAR},
+      BOOK_PRICE = #{bookPrice,jdbcType=INTEGER},
+      RCV_DATE = #{rcvDate,jdbcType=DATE},
+      LOGIN_STATUS = #{loginStatus,jdbcType=CHAR}
+    where PRODUCT_ID = #{productId,jdbcType=VARCHAR}
+  </update>
+</mapper>
