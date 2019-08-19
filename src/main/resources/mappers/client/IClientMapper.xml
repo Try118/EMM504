@@ -20,10 +20,67 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </resultMap>
 
 	<select id="selectListByAll" resultMap="ClientModelResultMap">
-		select IDENTIFY_ID,REC_TIME,CLIENT_PROPERTY,UNIT_NAME,PHONE_NUMBER,MOBILE_NUMBER,CLIENT_ADDRESS,ZIP_CODE,CONNECT_PEOPLE,EMAIL from client_info
+		select * from client_info
 	</select>
 	
 	<insert id="create">
-		insert into client_info (CLIENT_ID,IDENTIFY_ID) values (#{client_id},#{identify_id}) 
+		insert into client_info (CLIENT_ID,IDENTIFY_ID,REC_TIME,CLIENT_PROPERTY,UNIT_NAME,PHONE_NUMBER,MOBILE_NUMBER,CLIENT_ADDRESS,ZIP_CODE,CONNECT_PEOPLE,EMAIL) 
+		values 
+		(#{client_id},#{identify_id},#{rec_time},#{client_property},#{unit_name},#{phone_number},#{mobile_number},#{client_address},#{zip_code},#{connect_people},#{email}) 
 	</insert>
+	
+	<!-- 取得客户的个数，使用IFNULL函数判断count函数结果是否为null, 为null返回0 -->
+	<select id="selectCountByAll" resultType="int">
+		select IFNULL(count(client_id),0) from client_info
+		<where>
+			<if test="client_property!=null">
+				and CLIENT_PROPERTY = #{client_property}
+			</if>
+			<if test="zip_code!=null">
+				and ZIP_CODE = #{zip_code}
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectListByAllWithPage" resultMap="ClientModelResultMap">
+		select * from client_info 
+		<where>
+			<if test="zip_code!=''">
+				and ZIP_CODE = #{zip_code}
+			</if>
+			<if test="client_property!=''">
+				and CLIENT_PROPERTY = #{client_property}
+			</if>
+		</where>
+		limit #{start},#{rows}
+	</select>
+	
+	<delete id="delete">
+		delete from client_info where CLIENT_ID = #{client_id}
+	</delete>
+	
+	<select id="getByClientId" resultMap="ClientModelResultMap">
+		select * from client_info where CLIENT_ID = #{client_id}
+	</select>
+	
+	<update id="modify">
+		update client_info set IDENTIFY_ID=#{identify_id} where CLIENT_ID = #{client_id}
+	</update>
+	
+	<select id="selectListByAddition" resultMap="ClientModelResultMap">
+		select * from client_info
+		<where>
+			<if test="client_property!=null and client_property!=''">
+				and CLIENT_PROPERTY = #{client_property}
+			</if>
+			<if test="zip_code!=null and zip_code!=''">
+				and ZIP_CODE = #{zip_code}
+			</if>
+		</where>
+	</select>
+	
+	
+	<select	id="selectZipCode" resultMap="ClientModelResultMap">
+		select distinct(zip_code) from client_info where zip_code != ''
+	</select>
 </mapper>        
