@@ -3,7 +3,7 @@ package com.yx.emm504.Model.maintain;
 import java.util.Date;
 
 public class MaintainInfo {
-    private String productId;//ggggss
+    private String productId;//ggggssss
 
     private String maintainStatus;
 
