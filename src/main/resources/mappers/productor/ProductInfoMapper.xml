@@ -28,6 +28,17 @@
         <result column="LOGIN_STATUS" property="loginStatus" jdbcType="CHAR"/>
     </resultMap>
 
+    <resultMap id="BaseResultMap1" type="com.yx.emm504.Model.product.ProductToClient">
+        <result column="CONNECT_PEOPLE" property="connect_people"/>
+        <result column="UNIT_NAME" property="unit_name"/>
+        <result column="PRODUCT_TYPE" property="productType" jdbcType="VARCHAR"/>
+        <result column="MACHINE_RANK" property="machineRank" jdbcType="VARCHAR"/>
+        <result column="MACHINE_MODEL" property="machineModel" jdbcType="VARCHAR"/>
+        <result column="SERIAL_NUM" property="serialNum" jdbcType="VARCHAR"/>
+        <result column="SHORTAGE_PART" property="shortagePart" jdbcType="VARCHAR"/>
+        <result column="MACHINE_FAULT" property="machineFault" jdbcType="VARCHAR"/>
+    </resultMap>
+
     <sql id="Base_Column_List">
     PRODUCT_ID, CLIENT_ID, PRODUCT_TYPE, MACHINE_RANK, MACHINE_MODEL, SERIAL_NUM, SHORTAGE_PART, 
     HDD, MEMORY, PC_CARD, AC_ADAPTER, CELL, CD_ROM, FD, START_PASSWORD, IMPORT_DATA, 
@@ -44,6 +55,15 @@
     <select id="selectListByAll" resultMap="BaseResultMap">
 		select * from PRODUCT_INFO
 	</select>
+
+    <select id="selectListByAddition" resultMap="BaseResultMap">
+        select * from PRODUCT_INFO
+        <where>
+            <if test="loginStatus!=null and loginStatus!=''">
+                and LOGIN_STATUS = #{loginStatus}
+            </if>
+        </where>
+    </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from PRODUCT_INFO
@@ -314,4 +334,10 @@
       LOGIN_STATUS = #{loginStatus,jdbcType=CHAR}
     where PRODUCT_ID = #{productId,jdbcType=VARCHAR}
   </update>
+
+    <select id="selectProductToClient" resultMap="BaseResultMap1">
+		select a.UNIT_NAME,a.CONNECT_PEOPLE,b.PRODUCT_TYPE,b.MACHINE_RANK,b.MACHINE_MODEL,b.SERIAL_NUM,b.SHORTAGE_PART,
+		b.MACHINE_FAULT from client_info a,PRODUCT_INFO b where a.CLIENT_ID = #{clientId};
+	</select>
+
 </mapper>

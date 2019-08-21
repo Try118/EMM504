@@ -1,7 +1,9 @@
 package com.yx.emm504.Controller;
 
 import com.yx.emm504.Model.product.ProductInfo;
+import com.yx.emm504.Model.product.ProductToClient;
 import com.yx.emm504.message.ResultMessage;
+import com.yx.emm504.product.mapper.ProductInfoMapper;
 import com.yx.emm504.product.service.ProductService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -17,6 +19,15 @@ public class ProductController {
 
     @Autowired
     ProductService productService = null;
+
+    @Autowired
+    ProductInfoMapper productInfoMapper = null;
+
+    @GetMapping("/test")
+    public ProductToClient test(String clientId){
+        ProductToClient productToClient = productInfoMapper.selectProductToClient(clientId);
+        return productToClient;
+    }
 
     @ApiOperation("添加保修信息")
     @PostMapping("/news")
