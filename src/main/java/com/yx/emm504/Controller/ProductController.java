@@ -32,6 +32,7 @@ public class ProductController {
         List<ProductInfo> productInfos = null;
         if (productId==null){
             productInfos = productService.getListByAll();
+
         }else{
             productInfos = productService.GetProductNew(productId);
         }
