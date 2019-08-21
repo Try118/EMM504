@@ -2,15 +2,32 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yx.emm504.maintain.mapper.MaintainInfoMapper">
   <resultMap id="BaseResultMap" type="com.yx.emm504.Model.maintain.MaintainInfo">
-    <id column="PRODUCT_ID" jdbcType="VARCHAR" property="productId" />
-    <result column="MAINTAIN_STATUS" jdbcType="CHAR" property="maintainStatus" />
-    <result column="MAINTAIN_NOTE" jdbcType="VARCHAR" property="maintainNote" />
-    <result column="CHECK_NOTE" jdbcType="VARCHAR" property="checkNote" />
-    <result column="MAINTAIN_MAN" jdbcType="VARCHAR" property="maintainMan" />
-    <result column="PROCESS_DATE" jdbcType="DATE" property="processDate" />
-    <result column="USED_PARTS" jdbcType="VARCHAR" property="usedParts" />
-    <result column="WORKLOAD" jdbcType="DECIMAL" property="workload" />
+    <id column="PRODUCT_ID" property="productId" />
+    <result column="MAINTAIN_STATUS"  property="maintainStatus" />
+    <result column="MAINTAIN_NOTE"  property="maintainNote" />
+    <result column="CHECK_NOTE"  property="checkNote" />
+    <result column="MAINTAIN_MAN"  property="maintainMan" />
+    <result column="PROCESS_DATE"  property="processDate" />
+    <result column="USED_PARTS" j property="usedParts" />
+    <result column="WORKLOAD"  property="workload" />
   </resultMap>
+  
+  <select id="selectById" resultMap="BaseResultMap">
+  	select * from MAINTAIN_INFO
+  </select>
+  
+  <select id="selectListByAll" resultMap="BaseResultMap">
+  	select * from MAINTAIN_INFO
+  </select>
+  
+  <delete id="delete" flushCache="true">
+  	delete from MAINTAIN_INFO where id=#{productId};
+  </delete>
+  
+  <update id="update" flushCache="true">
+  	update MAINTAIN_INFO set PRODUCT=#{module.no} FUNNAME=#{name},FUNURL=#{url} where FUNNO=#{no}
+  </update>
+  
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
