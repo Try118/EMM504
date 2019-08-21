@@ -37,6 +37,7 @@ public class ProductController {
 
     @DeleteMapping("/news")
     public ResultMessage<ProductInfo> DeleteProductNew(ProductInfo productInfo){
+
         Boolean aBoolean = productService.DeleteProductNew(productInfo);
         if (aBoolean) return new ResultMessage<ProductInfo>("OK","删除成功");
         return new ResultMessage<ProductInfo>("Error","删除失败");
