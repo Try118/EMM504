@@ -10,9 +10,9 @@ import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface MaintainInfoMapper {
-    int delete(String productId);
+    int delete(String productId) throws Exception;;
 
-    int insert(MaintainInfo record);
+    int insert(MaintainInfo record) throws Exception;
 
     MaintainInfo selectById(String productId);
 
