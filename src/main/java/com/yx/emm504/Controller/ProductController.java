@@ -39,6 +39,7 @@ public class ProductController {
     @ApiOperation("获取用户报修信息")
     @GetMapping("/news")
     public ResultMessage<ProductInfo> GetProductNew(String productId){
+
         List<ProductInfo> productInfos = null;
         if (productId==null){
             productInfos = productService.getListByAll();
