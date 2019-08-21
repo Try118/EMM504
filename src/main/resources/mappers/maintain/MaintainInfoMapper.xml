@@ -8,7 +8,7 @@
     <result column="CHECK_NOTE"  property="checkNote" />
     <result column="MAINTAIN_MAN"  property="maintainMan" />
     <result column="PROCESS_DATE"  property="processDate" />
-    <result column="USED_PARTS" j property="usedParts" />
+    <result column="USED_PARTS" property="usedParts" />
     <result column="WORKLOAD"  property="workload" />
   </resultMap>
   
