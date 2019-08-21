@@ -3,6 +3,8 @@ package com.yx.emm504.Model.maintain;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class MaintainInfo implements Serializable{
     private String productId;		//维修编号		
 
@@ -14,6 +16,7 @@ public class MaintainInfo implements Serializable{
 
     private String maintainMan;		//维修工人
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date processDate;		//检测日期
 
     private String usedParts;		//维修所使用的器件
