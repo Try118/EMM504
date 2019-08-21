@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -31,7 +32,9 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<ProductInfo> GetProductNew(String productId) {
         ProductInfo productInfo = productInfoMapper.selectByPrimaryKey(productId);
-        return null;
+        List<ProductInfo> productInfos = new ArrayList<>();
+        productInfos.add(productInfo);
+        return productInfos;
     }
 
     @Override
