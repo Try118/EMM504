@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yx.emm504.maintain.mapper.MaintainInfoMapper">
+  <resultMap id="BaseResultMap" type="com.yx.emm504.Model.maintain.MaintainInfo">
+    <id column="PRODUCT_ID" jdbcType="VARCHAR" property="productId" />
+    <result column="MAINTAIN_STATUS" jdbcType="CHAR" property="maintainStatus" />
+    <result column="MAINTAIN_NOTE" jdbcType="VARCHAR" property="maintainNote" />
+    <result column="CHECK_NOTE" jdbcType="VARCHAR" property="checkNote" />
+    <result column="MAINTAIN_MAN" jdbcType="VARCHAR" property="maintainMan" />
+    <result column="PROCESS_DATE" jdbcType="DATE" property="processDate" />
+    <result column="USED_PARTS" jdbcType="VARCHAR" property="usedParts" />
+    <result column="WORKLOAD" jdbcType="DECIMAL" property="workload" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    PRODUCT_ID, MAINTAIN_STATUS, MAINTAIN_NOTE, CHECK_NOTE, MAINTAIN_MAN, PROCESS_DATE, 
+    USED_PARTS, WORKLOAD
+  </sql>
+  <select id="selectByExample" parameterType="com.yx.emm504.Model.maintain.MaintainInfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from maintain_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from maintain_info
+    where PRODUCT_ID = #{productId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from maintain_info
+    where PRODUCT_ID = #{productId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yx.emm504.Model.maintain.MaintainInfoExample">
+    delete from maintain_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yx.emm504.Model.maintain.MaintainInfo">
+    insert into maintain_info (PRODUCT_ID, MAINTAIN_STATUS, MAINTAIN_NOTE, 
+      CHECK_NOTE, MAINTAIN_MAN, PROCESS_DATE, 
+      USED_PARTS, WORKLOAD)
+    values (#{productId,jdbcType=VARCHAR}, #{maintainStatus,jdbcType=CHAR}, #{maintainNote,jdbcType=VARCHAR}, 
+      #{checkNote,jdbcType=VARCHAR}, #{maintainMan,jdbcType=VARCHAR}, #{processDate,jdbcType=DATE}, 
+      #{usedParts,jdbcType=VARCHAR}, #{workload,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yx.emm504.Model.maintain.MaintainInfo">
+    insert into maintain_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="productId != null">
+        PRODUCT_ID,
+      </if>
+      <if test="maintainStatus != null">
+        MAINTAIN_STATUS,
+      </if>
+      <if test="maintainNote != null">
+        MAINTAIN_NOTE,
+      </if>
+      <if test="checkNote != null">
+        CHECK_NOTE,
+      </if>
+      <if test="maintainMan != null">
+        MAINTAIN_MAN,
+      </if>
+      <if test="processDate != null">
+        PROCESS_DATE,
+      </if>
+      <if test="usedParts != null">
+        USED_PARTS,
+      </if>
+      <if test="workload != null">
+        WORKLOAD,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="productId != null">
+        #{productId,jdbcType=VARCHAR},
+      </if>
+      <if test="maintainStatus != null">
+        #{maintainStatus,jdbcType=CHAR},
+      </if>
+      <if test="maintainNote != null">
+        #{maintainNote,jdbcType=VARCHAR},
+      </if>
+      <if test="checkNote != null">
+        #{checkNote,jdbcType=VARCHAR},
+      </if>
+      <if test="maintainMan != null">
+        #{maintainMan,jdbcType=VARCHAR},
+      </if>
+      <if test="processDate != null">
+        #{processDate,jdbcType=DATE},
+      </if>
+      <if test="usedParts != null">
+        #{usedParts,jdbcType=VARCHAR},
+      </if>
+      <if test="workload != null">
+        #{workload,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yx.emm504.Model.maintain.MaintainInfoExample" resultType="java.lang.Integer">
+    select count(*) from maintain_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update maintain_info
+    <set>
+      <if test="record.productId != null">
+        PRODUCT_ID = #{record.productId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.maintainStatus != null">
+        MAINTAIN_STATUS = #{record.maintainStatus,jdbcType=CHAR},
+      </if>
+      <if test="record.maintainNote != null">
+        MAINTAIN_NOTE = #{record.maintainNote,jdbcType=VARCHAR},
+      </if>
+      <if test="record.checkNote != null">
+        CHECK_NOTE = #{record.checkNote,jdbcType=VARCHAR},
+      </if>
+      <if test="record.maintainMan != null">
+        MAINTAIN_MAN = #{record.maintainMan,jdbcType=VARCHAR},
+      </if>
+      <if test="record.processDate != null">
+        PROCESS_DATE = #{record.processDate,jdbcType=DATE},
+      </if>
+      <if test="record.usedParts != null">
+        USED_PARTS = #{record.usedParts,jdbcType=VARCHAR},
+      </if>
+      <if test="record.workload != null">
+        WORKLOAD = #{record.workload,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update maintain_info
+    set PRODUCT_ID = #{record.productId,jdbcType=VARCHAR},
+      MAINTAIN_STATUS = #{record.maintainStatus,jdbcType=CHAR},
+      MAINTAIN_NOTE = #{record.maintainNote,jdbcType=VARCHAR},
+      CHECK_NOTE = #{record.checkNote,jdbcType=VARCHAR},
+      MAINTAIN_MAN = #{record.maintainMan,jdbcType=VARCHAR},
+      PROCESS_DATE = #{record.processDate,jdbcType=DATE},
+      USED_PARTS = #{record.usedParts,jdbcType=VARCHAR},
+      WORKLOAD = #{record.workload,jdbcType=DECIMAL}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yx.emm504.Model.maintain.MaintainInfo">
+    update maintain_info
+    <set>
+      <if test="maintainStatus != null">
+        MAINTAIN_STATUS = #{maintainStatus,jdbcType=CHAR},
+      </if>
+      <if test="maintainNote != null">
+        MAINTAIN_NOTE = #{maintainNote,jdbcType=VARCHAR},
+      </if>
+      <if test="checkNote != null">
+        CHECK_NOTE = #{checkNote,jdbcType=VARCHAR},
+      </if>
+      <if test="maintainMan != null">
+        MAINTAIN_MAN = #{maintainMan,jdbcType=VARCHAR},
+      </if>
+      <if test="processDate != null">
+        PROCESS_DATE = #{processDate,jdbcType=DATE},
+      </if>
+      <if test="usedParts != null">
+        USED_PARTS = #{usedParts,jdbcType=VARCHAR},
+      </if>
+      <if test="workload != null">
+        WORKLOAD = #{workload,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where PRODUCT_ID = #{productId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yx.emm504.Model.maintain.MaintainInfo">
+    update maintain_info
+    set MAINTAIN_STATUS = #{maintainStatus,jdbcType=CHAR},
+      MAINTAIN_NOTE = #{maintainNote,jdbcType=VARCHAR},
+      CHECK_NOTE = #{checkNote,jdbcType=VARCHAR},
+      MAINTAIN_MAN = #{maintainMan,jdbcType=VARCHAR},
+      PROCESS_DATE = #{processDate,jdbcType=DATE},
+      USED_PARTS = #{usedParts,jdbcType=VARCHAR},
+      WORKLOAD = #{workload,jdbcType=DECIMAL}
+    where PRODUCT_ID = #{productId,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.yx.emm504.Model.maintain.MaintainInfo">
+    <id column="PRODUCT_ID" jdbcType="VARCHAR" property="productId" />
+    <result column="MAINTAIN_STATUS" jdbcType="CHAR" property="maintainStatus" />
+    <result column="MAINTAIN_NOTE" jdbcType="VARCHAR" property="maintainNote" />
+    <result column="CHECK_NOTE" jdbcType="VARCHAR" property="checkNote" />
+    <result column="MAINTAIN_MAN" jdbcType="VARCHAR" property="maintainMan" />
+    <result column="PROCESS_DATE" jdbcType="DATE" property="processDate" />
+    <result column="USED_PARTS" jdbcType="VARCHAR" property="usedParts" />
+    <result column="WORKLOAD" jdbcType="DECIMAL" property="workload" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    PRODUCT_ID, MAINTAIN_STATUS, MAINTAIN_NOTE, CHECK_NOTE, MAINTAIN_MAN, PROCESS_DATE, 
+    USED_PARTS, WORKLOAD
+  </sql>
+  <select id="selectByExample" parameterType="com.yx.emm504.Model.maintain.MaintainInfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from maintain_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from maintain_info
+    where PRODUCT_ID = #{productId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from maintain_info
+    where PRODUCT_ID = #{productId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yx.emm504.Model.maintain.MaintainInfoExample">
+    delete from maintain_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yx.emm504.Model.maintain.MaintainInfo">
+    insert into maintain_info (PRODUCT_ID, MAINTAIN_STATUS, MAINTAIN_NOTE, 
+      CHECK_NOTE, MAINTAIN_MAN, PROCESS_DATE, 
+      USED_PARTS, WORKLOAD)
+    values (#{productId,jdbcType=VARCHAR}, #{maintainStatus,jdbcType=CHAR}, #{maintainNote,jdbcType=VARCHAR}, 
+      #{checkNote,jdbcType=VARCHAR}, #{maintainMan,jdbcType=VARCHAR}, #{processDate,jdbcType=DATE}, 
+      #{usedParts,jdbcType=VARCHAR}, #{workload,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yx.emm504.Model.maintain.MaintainInfo">
+    insert into maintain_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="productId != null">
+        PRODUCT_ID,
+      </if>
+      <if test="maintainStatus != null">
+        MAINTAIN_STATUS,
+      </if>
+      <if test="maintainNote != null">
+        MAINTAIN_NOTE,
+      </if>
+      <if test="checkNote != null">
+        CHECK_NOTE,
+      </if>
+      <if test="maintainMan != null">
+        MAINTAIN_MAN,
+      </if>
+      <if test="processDate != null">
+        PROCESS_DATE,
+      </if>
+      <if test="usedParts != null">
+        USED_PARTS,
+      </if>
+      <if test="workload != null">
+        WORKLOAD,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="productId != null">
+        #{productId,jdbcType=VARCHAR},
+      </if>
+      <if test="maintainStatus != null">
+        #{maintainStatus,jdbcType=CHAR},
+      </if>
+      <if test="maintainNote != null">
+        #{maintainNote,jdbcType=VARCHAR},
+      </if>
+      <if test="checkNote != null">
+        #{checkNote,jdbcType=VARCHAR},
+      </if>
+      <if test="maintainMan != null">
+        #{maintainMan,jdbcType=VARCHAR},
+      </if>
+      <if test="processDate != null">
+        #{processDate,jdbcType=DATE},
+      </if>
+      <if test="usedParts != null">
+        #{usedParts,jdbcType=VARCHAR},
+      </if>
+      <if test="workload != null">
+        #{workload,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yx.emm504.Model.maintain.MaintainInfoExample" resultType="java.lang.Integer">
+    select count(*) from maintain_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update maintain_info
+    <set>
+      <if test="record.productId != null">
+        PRODUCT_ID = #{record.productId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.maintainStatus != null">
+        MAINTAIN_STATUS = #{record.maintainStatus,jdbcType=CHAR},
+      </if>
+      <if test="record.maintainNote != null">
+        MAINTAIN_NOTE = #{record.maintainNote,jdbcType=VARCHAR},
+      </if>
+      <if test="record.checkNote != null">
+        CHECK_NOTE = #{record.checkNote,jdbcType=VARCHAR},
+      </if>
+      <if test="record.maintainMan != null">
+        MAINTAIN_MAN = #{record.maintainMan,jdbcType=VARCHAR},
+      </if>
+      <if test="record.processDate != null">
+        PROCESS_DATE = #{record.processDate,jdbcType=DATE},
+      </if>
+      <if test="record.usedParts != null">
+        USED_PARTS = #{record.usedParts,jdbcType=VARCHAR},
+      </if>
+      <if test="record.workload != null">
+        WORKLOAD = #{record.workload,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update maintain_info
+    set PRODUCT_ID = #{record.productId,jdbcType=VARCHAR},
+      MAINTAIN_STATUS = #{record.maintainStatus,jdbcType=CHAR},
+      MAINTAIN_NOTE = #{record.maintainNote,jdbcType=VARCHAR},
+      CHECK_NOTE = #{record.checkNote,jdbcType=VARCHAR},
+      MAINTAIN_MAN = #{record.maintainMan,jdbcType=VARCHAR},
+      PROCESS_DATE = #{record.processDate,jdbcType=DATE},
+      USED_PARTS = #{record.usedParts,jdbcType=VARCHAR},
+      WORKLOAD = #{record.workload,jdbcType=DECIMAL}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yx.emm504.Model.maintain.MaintainInfo">
+    update maintain_info
+    <set>
+      <if test="maintainStatus != null">
+        MAINTAIN_STATUS = #{maintainStatus,jdbcType=CHAR},
+      </if>
+      <if test="maintainNote != null">
+        MAINTAIN_NOTE = #{maintainNote,jdbcType=VARCHAR},
+      </if>
+      <if test="checkNote != null">
+        CHECK_NOTE = #{checkNote,jdbcType=VARCHAR},
+      </if>
+      <if test="maintainMan != null">
+        MAINTAIN_MAN = #{maintainMan,jdbcType=VARCHAR},
+      </if>
+      <if test="processDate != null">
+        PROCESS_DATE = #{processDate,jdbcType=DATE},
+      </if>
+      <if test="usedParts != null">
+        USED_PARTS = #{usedParts,jdbcType=VARCHAR},
+      </if>
+      <if test="workload != null">
+        WORKLOAD = #{workload,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where PRODUCT_ID = #{productId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yx.emm504.Model.maintain.MaintainInfo">
+    update maintain_info
+    set MAINTAIN_STATUS = #{maintainStatus,jdbcType=CHAR},
+      MAINTAIN_NOTE = #{maintainNote,jdbcType=VARCHAR},
+      CHECK_NOTE = #{checkNote,jdbcType=VARCHAR},
+      MAINTAIN_MAN = #{maintainMan,jdbcType=VARCHAR},
+      PROCESS_DATE = #{processDate,jdbcType=DATE},
+      USED_PARTS = #{usedParts,jdbcType=VARCHAR},
+      WORKLOAD = #{workload,jdbcType=DECIMAL}
+    where PRODUCT_ID = #{productId,jdbcType=VARCHAR}
+  </update>
+</mapper>
