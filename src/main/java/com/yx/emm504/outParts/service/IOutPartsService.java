@@ -8,5 +8,11 @@ public interface IOutPartsService {
 
 	public List<OutPartsModel> getListByAll() throws Exception;
 	
+	public void create(OutPartsModel outPartsModel) throws Exception;
 	
+	public void delete(OutPartsModel outPartsModel) throws Exception;
+	
+	public void update(OutPartsModel outPartsModel) throws Exception;
+	
+	public OutPartsModel getOutPartsByName(String parts_name) throws Exception;
 }
