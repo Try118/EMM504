@@ -1,5 +1,7 @@
 package com.yx.emm504.Model.product;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -45,7 +47,7 @@ public class ProductInfo implements Serializable {
     private String outerCheck;
 
     private Integer bookPrice;
-
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date rcvDate;
 
     private String loginStatus;
