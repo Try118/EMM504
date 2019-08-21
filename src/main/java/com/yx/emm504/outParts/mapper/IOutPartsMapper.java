@@ -16,4 +16,6 @@ public interface IOutPartsMapper {
 	public void delete(OutPartsModel outPartsModel) throws Exception;
 	
 	public void modify(OutPartsModel outPartsModel) throws Exception;
+	
+	public OutPartsModel getOutPartsByName(String parts_name) throws Exception;
 }
