@@ -1,8 +1,9 @@
 package com.yx.emm504.Model.maintain;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class MaintainInfo {
+public class MaintainInfo implements Serializable{
     private String productId;		//维修编号		
 
     private String maintainStatus;	//维修状态
