@@ -3,21 +3,21 @@ package com.yx.emm504.Model.maintain;
 import java.util.Date;
 
 public class MaintainInfo {
-    private String productId;//ggggssss
+    private String productId;		//维修编号		
 
-    private String maintainStatus;
+    private String maintainStatus;	//维修状态
 
-    private String maintainNote;
+    private String maintainNote;	//维修记录
 
-    private String checkNote;
+    private String checkNote;		//检测记录
 
-    private String maintainMan;
+    private String maintainMan;		//维修工人
 
-    private Date processDate;
+    private Date processDate;		//检测日期
 
-    private String usedParts;
+    private String usedParts;		//维修所使用的器件
 
-    private Long workload;
+    private Long workload;			//工作量
 
     public String getProductId() {
         return productId;
