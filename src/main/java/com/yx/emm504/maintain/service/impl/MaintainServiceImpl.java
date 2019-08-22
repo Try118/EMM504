@@ -3,11 +3,14 @@ package com.yx.emm504.maintain.service.impl;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.yx.emm504.Model.maintain.MaintainInfo;
 import com.yx.emm504.maintain.mapper.MaintainInfoMapper;
 import com.yx.emm504.maintain.service.MaintainService;
 
+@Service
 public class MaintainServiceImpl implements MaintainService{
 
 	@Autowired
