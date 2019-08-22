@@ -17,6 +17,7 @@ $(function(){
 			{ label: '接机日期', name: 'rcvDate' },
 			{ label: '报修产品登记状态', name: 'loginStatus' },
 		],
+
 		viewrecords: true, 
 		autowidth: true,
 		height: 400,
