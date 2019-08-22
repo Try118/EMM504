@@ -1,22 +1,25 @@
 package com.yx.emm504.maintain.mapper;
 
-import com.yx.emm504.Model.maintain.MaintainInfo;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import com.yx.emm504.Model.maintain.MaintainInfo;
+
 @Mapper
 public interface MaintainInfoMapper {
-    int delete(String productId) ;
+    public int delete(String productId) ;
 
-    int insert(MaintainInfo record) ;
+    public int insert(MaintainInfo record) ;
 
-    MaintainInfo selectById(String productId);
-
-    ArrayList<MaintainInfo> selectListByAll();
+    public MaintainInfo selectById(String productId);
     
-    int update(MaintainInfo record);
+    public int update(MaintainInfo record);
+    
+    public int selectCountByAll();
+    
+    public List<MaintainInfo> selectListByAll();
+    
+    public List<MaintainInfo> selectListByAllWithPage(@Param("start")int start,@Param("rows")int rows);
 }

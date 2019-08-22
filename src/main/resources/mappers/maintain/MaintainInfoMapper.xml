@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yx.emm504.maintain.mapper.MaintainInfoMapper">
-  <resultMap id="BaseResultMap" type="com.yx.emm504.Model.maintain.MaintainInfo">
+  <resultMap id="MaintainResultMap" type="com.yx.emm504.Model.maintain.MaintainInfo">
     <id column="PRODUCT_ID" property="productId" />
     <result column="MAINTAIN_STATUS"  property="maintainStatus" />
     <result column="MAINTAIN_NOTE"  property="maintainNote" />
@@ -14,12 +14,12 @@
   
   
   <!-- 查询维修信息 -->
-  <select id="selectById" resultMap="BaseResultMap">
+  <select id="selectById" resultMap="MaintainResultMap">
   	select * from MAINTAIN_INFO
   </select>
   
    <!-- 查询维修信息 -->
-  <select id="selectListByAll" resultMap="BaseResultMap">
+  <select id="selectListByAll" resultMap="MaintainResultMap">
   	select * from MAINTAIN_INFO
   </select>
   
@@ -41,4 +41,16 @@
   	#{maintaininfo.checkNode},#{maintaininfo.maintainMan},#{maintaininfo.processDate},#{maintaininfo.usedParts},
   	#{maintaininfo.workload})
   </insert>
+  
+  
+  <!-- 取得维修任务的个数，使用IFNULL函数判断count函数结果是否为null, 为null返回0 -->
+  	<select id="selectCountByAll" resultType="int">
+		select IFNULL(count(product_id),0) from maintain_info
+	</select>
+	
+	
+	<!-- 获取所有维修任务列表 -->
+	<select id="selectListByAllWithPage" resultMap="MaintainResultMap">
+		select * from maintain_info limit #{start},#{rows}
+	</select>
 </mapper>

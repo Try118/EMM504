@@ -12,7 +12,7 @@ import com.yx.emm504.Model.ClientModel;
 import com.yx.emm504.client.service.IClientService;
 import com.yx.emm504.message.ResultMessage;
 
-@RequestMapping("/client")
+@RequestMapping("/Client")
 @RestController
 public class ClientController {
 
