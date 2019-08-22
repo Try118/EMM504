@@ -1,5 +1,6 @@
 package com.yx.emm504.maintain.mapper;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -17,9 +18,10 @@ public interface MaintainInfoMapper {
     
     public int update(MaintainInfo record);
     
-    public int selectCountByAll();
+    public int selectCountByAll(@Param("maintainStatus") String maintainStatus,@Param("startDate")Date startDate,@Param("endDate")Date endDate);
     
     public List<MaintainInfo> selectListByAll();
     
-    public List<MaintainInfo> selectListByAllWithPage(@Param("start")int start,@Param("rows")int rows);
+    public List<MaintainInfo> selectListByAllWithPage(@Param("start")int start,@Param("rows")int rows,@Param("maintainStatus") String maintainStatus,@Param("startDate")Date startDate,@Param("endDate")Date endDate);
+    
 }

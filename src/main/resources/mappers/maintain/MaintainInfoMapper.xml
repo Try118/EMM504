@@ -46,11 +46,34 @@
   <!-- 取得维修任务的个数，使用IFNULL函数判断count函数结果是否为null, 为null返回0 -->
   	<select id="selectCountByAll" resultType="int">
 		select IFNULL(count(product_id),0) from maintain_info
+		<where>
+		     <if test="maintainStatus!=null">
+		      and MAINTAIN_STATUS=#{maintainStatus}
+		     </if>
+		     <if test="startDate!=null">
+		      and processDate &gt;=#{startDate}
+		     </if>
+		     <if test="endDate!=null">
+		      and processDate &lt;=#{endDate}
+		     </if>
+		 </where>
 	</select>
 	
 	
 	<!-- 获取所有维修任务列表 -->
 	<select id="selectListByAllWithPage" resultMap="MaintainResultMap">
-		select * from maintain_info limit #{start},#{rows}
+		select * from maintain_info 
+		<where>
+		     <if test="maintainStatus!=null">
+		      and MAINTAIN_STATUS=#{maintainStatus}
+		     </if>
+		     <if test="startDate!=null">
+		      and processDate  &gt;=#{startDate}
+		     </if>
+		     <if test="endDate!=null">
+		      and processDate &lt;=#{endDate}
+		     </if>
+		 </where>
+		limit #{start},#{rows}
 	</select>
 </mapper>

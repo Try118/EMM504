@@ -1,9 +1,13 @@
 $(function(){	
 	var productid=null;	
+	var maintainStatus=null
+	var processDate=null;
+	var startDate=null;
+	var endDate=null;
 	//设置系统页面标题
 	$("span#mainpagetille").html("维修管理");
 	$("table#MaintainGrid").jqGrid({
-		url: 'http://127.0.0.1:8080/Maintain/getListByAllWithPage',
+		url: 'http://localhost:8080/Maintain/getListByAllWithPage',
 		datatype: "json",
 		styleUI: "Bootstrap",
 
@@ -36,8 +40,29 @@ $(function(){
 			alert(productId);
 		}
 	});
-
 	
+	
+	//点击检索事件处理
+	$("a#MaintainSelectButton").on("click",function(){
+		maintainStatus=$("select#maintainStatusSelection").val();
+		startDate=$("input#startDate").val();
+		endDate=$("input#endDate").val();
+		if(startDate==""){
+			startDate=null;
+		}
+		if(endDate==""){
+			endDate=null;
+		}
+		reloadMaintainList();
+	});
+	
+	
+	//设置检索参数，更新jQGrid的列表显示
+	function reloadMaintainList()
+	{
+		$("table#MaintainGrid").jqGrid('setGridParam',{postData:{maintainStatus:maintainStatus,startDate:startDate,endDate:endDate}}).trigger("reloadGrid");
+		
+	}
 
 });
 

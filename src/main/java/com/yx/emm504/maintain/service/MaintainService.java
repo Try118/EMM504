@@ -1,6 +1,7 @@
 package com.yx.emm504.maintain.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.yx.emm504.Model.ClientModel;
@@ -17,9 +18,11 @@ public interface MaintainService {
     
     public void update(MaintainInfo record);
 	
-	public int getCountByAll();
+	public int getCountByAll(String maintainStatus, Date startDate, Date endDate);
 	
-	public int getPageCountByAll(int rows);
+	public int getPageCountByAll(int rows, String maintainStatus, Date startDate, Date endDate);
 	
-	public List<MaintainInfo> getListByAllWithPage(int rows,int page);
+	public List<MaintainInfo> getListByAllWithPage(int rows,int page,String productId, Date startDate, Date endDate);
+	
+
 }

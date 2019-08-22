@@ -1,10 +1,11 @@
 package com.yx.emm504.Controller;
 
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -57,12 +58,14 @@ public class MaintainController {
 	}
 	
 	@RequestMapping("/getListByAllWithPage")
-	public ResultMessage<MaintainInfo> getListByAllWitPage(@RequestParam(required = false,defaultValue ="10") int rows,@RequestParam(required = false,defaultValue = "1") int page){
+	public ResultMessage<MaintainInfo> getListByAllWitPage(@RequestParam(required = false,defaultValue ="10") int rows,@RequestParam(required = false,defaultValue = "1") int page,
+			@RequestParam(required = false) String maintainStatus,
+			@DateTimeFormat(pattern = "yyyy-MM-dd") @RequestParam(required = false) Date startDate,@DateTimeFormat(pattern = "yyyy-MM-dd") @RequestParam(required = false) Date endDate){
 		
 		ResultMessage<MaintainInfo> result=new ResultMessage<MaintainInfo>("OK","取得角色列表分页模式成功");
-		result.setCount(Mtain.getCountByAll());
-		result.setPageCount(Mtain.getPageCountByAll(rows));
-		result.setList(Mtain.getListByAllWithPage(rows, page));
+		result.setCount(Mtain.getCountByAll(maintainStatus, startDate, endDate));
+		result.setPageCount(Mtain.getPageCountByAll(rows,maintainStatus,startDate,endDate));
+		result.setList(Mtain.getListByAllWithPage(rows, page,maintainStatus,startDate,endDate));
 		result.setPage(page);
 		result.setRows(rows);
 		
