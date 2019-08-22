@@ -3,7 +3,7 @@ $(function(){
 	//设置系统页面标题
 	$("span#mainpagetille").html("维修管理");
 	$("table#MaintainGrid").jqGrid({
-		url: 'http://localhost:8080/Maintain/getListByAllWithPage',
+		url: 'http://127.0.0.1:8080/Maintain/getListByAllWithPage',
 		datatype: "json",
 		styleUI: "Bootstrap",
 		colModel: [
