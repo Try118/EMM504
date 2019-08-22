@@ -67,7 +67,7 @@ $(function(){
 	//维修任务删除
 	$("a#delete").off().on("click",function(){
 		if(productid==null){
-			alert("请选择客户");
+			alert("请选择客户");//
 		}else{
 			alert(666666);
 			$.ajax({
