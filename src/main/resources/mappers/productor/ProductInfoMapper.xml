@@ -339,5 +339,24 @@
 		select a.UNIT_NAME,a.CONNECT_PEOPLE,b.PRODUCT_TYPE,b.MACHINE_RANK,b.MACHINE_MODEL,b.SERIAL_NUM,b.SHORTAGE_PART,
 		b.MACHINE_FAULT from client_info a,PRODUCT_INFO b where a.CLIENT_ID = #{clientId};
 	</select>
+    <!--sdfg-->
+    <select id="selectCountByAll" resultType="int">
+        select IFNULL(count(PRODUCT_ID),0) from PRODUCT_INFO
+        <where>
+            <if test="loginStatus!=null">
+                and LOGIN_STATUS = #{loginStatus}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectListByAllWithPage" resultMap="BaseResultMap">
+        select * from PRODUCT_INFO
+        <where>
+            <if test="loginStatus!=''">
+                and LOGIN_STATUS = #{loginStatus}
+            </if>
+        </where>
+        limit #{start},#{rows}
+    </select>
 
 </mapper>

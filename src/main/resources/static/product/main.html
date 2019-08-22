@@ -1,0 +1,47 @@
+<script type="text/javascript" src="product/main.js"></script>
+<div class="container-fluid">
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item active">
+			<div>
+				<div class="btn-group">
+					<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						保修产品登记状态
+					</button>
+					<div class="dropdown-menu" id="div_client_property">
+						<a class="dropdown-item" href="#" id="">所有</a>
+						<a class="dropdown-item" href="#" id="0" value="0">未打印</a>
+						<a class="dropdown-item" href="#" id="1" value="1">打印</a>
+						<a class="dropdown-item" href="#" id="2" value="2">提交</a>
+					</div>
+				</div>
+								<div class="btn-group">
+<!--									  <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--									    	邮编-->
+<!--									  </button>-->
+									  <div class="dropdown-menu" id="div_zip_code">
+									  	<a class="dropdown-item" href="#" id="">所有</a>
+									  </div>
+								</div>
+				<button type="button" class="btn btn-secondary" id="btn_select">选择条件查询</button>
+			</div>
+		</li>
+		<div id="dialog_client"></div>
+	</ol>
+</div>
+<div class="container-fluid">
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item active">
+			<div>
+				<button type="button" class="btn btn-secondary" id="add">添加</button>
+				<button type="button" class="btn btn-secondary" id="delete">删除</button>
+				<button type="button" class="btn btn-secondary" id="update">修改</button>
+				<button type="button" class="btn btn-secondary" id="copy">打印</button>
+			</div>
+		</li>
+		<div id="dialog_client"></div>
+	</ol>
+</div>
+<div class="box-body">
+	<table id="ClientGrid"></table>
+	<div id="ClientGridPager"></div>
+</div>

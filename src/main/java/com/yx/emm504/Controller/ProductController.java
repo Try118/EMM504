@@ -20,14 +20,14 @@ public class ProductController {
     @Autowired
     ProductService productService = null;
 
-    @Autowired
-    ProductInfoMapper productInfoMapper = null;
-
-    @GetMapping("/test")
-    public ProductToClient test(String clientId){
-        ProductToClient productToClient = productInfoMapper.selectProductToClient(clientId);
-        return productToClient;
-    }
+//    @Autowired
+//    ProductInfoMapper productInfoMapper = null;
+//
+//    @GetMapping("/test")
+//    public List<ProductInfo> test(int start,int rows,String loginStatus){
+//        List<ProductInfo> productInfos = productInfoMapper.selectListByAllWithPage(start, rows, loginStatus);
+//        return productInfos;
+//    }
 
     @ApiOperation("添加保修信息")
     @PostMapping("/news")
@@ -50,6 +50,19 @@ public class ProductController {
         productInfoResultMessage.setList(productInfos);
         return productInfoResultMessage;
     }
+
+    @ApiOperation("获取翻页中同一页的数据")
+    @GetMapping("/news/condition")
+    public ResultMessage<ProductInfo> getListByAllWithPage(@RequestParam(required = false,defaultValue ="10") int rows,@RequestParam(required = false,defaultValue = "1") int page,@RequestParam(required = false,defaultValue ="")String loginStatus){
+        ResultMessage<ProductInfo> rm=new ResultMessage<ProductInfo>("OK","取得用户保修列表成功");
+        rm.setCount(productService.getCountByAll(loginStatus));
+        rm.setPageCount(productService.getPageCountByAll(rows,loginStatus));
+        rm.setList(productService.getListByAllWithPage(rows, page,loginStatus));
+        rm.setRows(rows);
+        rm.setPage(page);
+        return rm;
+    }
+
 
     @ApiOperation("删除用户报修信息")
     @DeleteMapping("/news")

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public interface ProductService{
+public interface ProductService {
     Boolean AddProductNew(ProductInfo productInfo);
 
     List<ProductInfo> getListByAll();
@@ -17,9 +17,9 @@ public interface ProductService{
 
     Boolean UpdateProductNew(ProductInfo productInfo);
 
-    List<ProductInfo> getListByAllWithPage(int rows, int page, String zip_code, String Product_property);
+    int getCountByAll(String loginStatus);
 
-    int getCountByAll(String zip_code,String Product_property);
+    int getPageCountByAll(int rows, String loginStatus);
 
-    int getPageCountByAll(int rows,String zip_code,String Product_property);
+    List<ProductInfo> getListByAllWithPage(int rows, int page, String loginStatus);
 }

@@ -3,6 +3,7 @@ package com.yx.emm504.product.mapper;
 import com.yx.emm504.Model.product.ProductInfo;
 import com.yx.emm504.Model.product.ProductToClient;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -25,4 +26,8 @@ public interface ProductInfoMapper {
     int updateByPrimaryKeySelective(ProductInfo record);
 
     int updateByPrimaryKey(ProductInfo record);
+
+    int selectCountByAll(String loginStatus);
+
+    List<ProductInfo> selectListByAllWithPage(@Param("start")int start, @Param("rows")int rows, @Param("loginStatus")String loginStatus);
 }

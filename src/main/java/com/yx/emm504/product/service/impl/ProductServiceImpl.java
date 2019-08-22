@@ -50,17 +50,25 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<ProductInfo> getListByAllWithPage(int rows, int page, String zip_code, String Product_property) {
-        return null;
+    public List<ProductInfo> getListByAllWithPage(int rows, int page, String loginStatus) {
+        return productInfoMapper.selectListByAllWithPage(rows*(page-1), rows,loginStatus);
     }
 
     @Override
-    public int getCountByAll(String zip_code, String Product_property) {
-        return 0;
+    public int getCountByAll(String loginStatus) {
+        return productInfoMapper.selectCountByAll(loginStatus);
     }
 
     @Override
-    public int getPageCountByAll(int rows, String zip_code, String Product_property) {
-        return 0;
+    public int getPageCountByAll(int rows, String loginStatus) {
+        int pageCount = 0;
+        int count = this.getCountByAll(loginStatus);
+        if (count % rows == 0) {
+            pageCount = count / rows;
+        } else {
+            pageCount = (count / rows) + 1;
+        }
+        return pageCount;
     }
+
 }
