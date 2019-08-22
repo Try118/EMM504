@@ -1,9 +1,9 @@
 package com.yx.emm504.maintain.service.impl;
 
-import java.util.ArrayList;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.yx.emm504.Model.maintain.MaintainInfo;
@@ -34,7 +34,7 @@ public class MaintainServiceImpl implements MaintainService{
 	}
 
 	@Override
-	public ArrayList<MaintainInfo> selectListByAll() {
+	public List<MaintainInfo> selectListByAll() {
 		
 		return Mtain.selectListByAll();
 	}
@@ -42,6 +42,28 @@ public class MaintainServiceImpl implements MaintainService{
 	@Override
 	public void update(MaintainInfo record) {
 		Mtain.update(record);
+	}
+
+	@Override
+	public int getCountByAll(){
+		return Mtain.selectCountByAll();
+	}
+
+	@Override
+	public int getPageCountByAll(int rows){
+		int pageCount = 0;
+		int count = this.getCountByAll();
+		if (count % rows == 0) {
+			pageCount = count / rows;
+		} else {
+			pageCount = (count / rows) + 1;
+		}
+		return pageCount;
+	}
+	
+	@Override
+	public List<MaintainInfo> getListByAllWithPage(int rows, int page){
+		return Mtain.selectListByAllWithPage(rows*(page-1), rows);
 	}
 
 }
