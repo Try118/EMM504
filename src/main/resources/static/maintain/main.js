@@ -6,6 +6,7 @@ $(function(){
 		url: 'http://127.0.0.1:8080/Maintain/getListByAllWithPage',
 		datatype: "json",
 		styleUI: "Bootstrap",
+
 		colModel: [
 			{ label: '维修编号', name: 'productId', width:75 },
 			{ label: '维修状态', name: 'maintainStatus',width:75 },  
