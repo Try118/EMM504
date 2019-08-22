@@ -3,7 +3,7 @@ $(function(){
 	var zip_code=null;
 	var client_property=null;
 	$("table#ClientGrid").jqGrid({
-		url: 'http://localhost:8080/client/getListByAllWithPage',
+		url: 'http://127.0.0.1:8080/client/getListByAllWithPage',
 		datatype: "json",
 		styleUI: "Bootstrap",
 		colModel: [

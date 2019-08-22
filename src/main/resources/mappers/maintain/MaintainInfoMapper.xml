@@ -25,7 +25,7 @@
   
   
   <delete id="delete" flushCache="true">
-  	delete from MAINTAIN_INFO where id=#{productId};
+  	delete from maintain_info where product_id=#{productId};
   </delete>
   
   <!-- 更新维修信息 -->

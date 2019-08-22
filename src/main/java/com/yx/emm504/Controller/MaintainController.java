@@ -45,11 +45,11 @@ public class MaintainController {
 		return resultMessage;
 	}
 	
-//	@RequestMapping("/delete")
-//	public ResultMessage<MaintainInfo> deleteMaintainInfo(String id){
-//		Mtain.delete(id);
-//		return new ResultMessage<MaintainInfo>("OK","删除成功");
-//	}
+	@RequestMapping("/delete")
+	public ResultMessage<MaintainInfo> deleteMaintainInfo(String id){
+		Mtain.delete(id);
+		return new ResultMessage<MaintainInfo>("OK","删除成功");
+	}
 	
 	@RequestMapping("/update")
 	public ResultMessage<MaintainInfo> updateMaintainInfo(MaintainInfo record){

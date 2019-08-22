@@ -37,7 +37,7 @@ $(function(){
 		pager: "#MaintainGridPager",
 		onSelectRow:function(productId){
 			productid=productId;
-			alert(productId);
+			//alert(productId);
 		}
 	});
 	
@@ -64,6 +64,27 @@ $(function(){
 		
 	}
 
+	//维修任务删除
+	$("a#delete").off().on("click",function(){
+		if(productid==null){
+			alert("请选择客户");
+		}else{
+			alert(666666);
+			$.ajax({
+				type: 'delete',
+				url: 'Maintain/delete',
+				data: {productId:productid},//'ids='+arr+'&_method=delete',
+				success: function(data){
+					// alert(data.message);
+					reloadMaintainList();
+					alert(555);
+				},
+				error: function(data){
+					alert(2);
+				}
+			});
+		}
+	});
 });
 
 
