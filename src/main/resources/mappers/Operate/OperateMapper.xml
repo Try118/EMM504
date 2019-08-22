@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yx.emm504.operate.mapper.IOperateMapper">
+
+	<resultMap id="ClientModelResultMap" type="com.yx.emm504.Model.ClientModel" > 
+		<id column="CLIENT_ID" property="client_id"/>       		     
+    	<result column="IDENTIFY_ID" property="identify_id"/>   
+    	<result column="REC_TIME" property="rec_time"/>   
+    	<result column="CLIENT_PROPERTY" property="client_property"/>   
+    	<result column="UNIT_NAME" property="unit_name"/>   
+    	<result column="PHONE_NUMBER" property="phone_number"/>   
+    	<result column="MOBILE_NUMBER" property="mobile_number"/>   
+    	<result column="CLIENT_ADDRESS" property="client_address"/>   
+    	<result column="ZIP_CODE" property="zip_code"/>   
+    	<result column="CONNECT_PEOPLE" property="connect_people"/>   
+    	<result column="EMAIL" property="email"/>         
+    </resultMap>
+    
+    <resultMap id="MaintainInfoResultMap" type="com.yx.emm504.Model.maintain.MaintainInfo">
+	    <id column="PRODUCT_ID" property="productId" />
+	    <result column="MAINTAIN_STATUS"  property="maintainStatus" />
+	    <result column="MAINTAIN_NOTE"  property="maintainNote" />
+	    <result column="CHECK_NOTE"  property="checkNote" />
+	    <result column="MAINTAIN_MAN"  property="maintainMan" />
+	    <result column="PROCESS_DATE"  property="processDate" />
+	    <result column="USED_PARTS" property="usedParts" />
+	    <result column="WORKLOAD"  property="workload" />
+  	</resultMap>
+    
+    <resultMap id="ProductInfoResultMap" type="com.yx.emm504.Model.product.ProductInfo">
+        <id column="PRODUCT_ID" property="productId" jdbcType="VARCHAR"/>
+        <result column="CLIENT_ID" property="clientId" jdbcType="VARCHAR"/>
+        <result column="PRODUCT_TYPE" property="productType" jdbcType="VARCHAR"/>
+        <result column="MACHINE_RANK" property="machineRank" jdbcType="VARCHAR"/>
+        <result column="MACHINE_MODEL" property="machineModel" jdbcType="VARCHAR"/>
+        <result column="SERIAL_NUM" property="serialNum" jdbcType="VARCHAR"/>
+        <result column="SHORTAGE_PART" property="shortagePart" jdbcType="VARCHAR"/>
+        <result column="HDD" property="hdd" jdbcType="VARCHAR"/>
+        <result column="MEMORY" property="memory" jdbcType="VARCHAR"/>
+        <result column="PC_CARD" property="pcCard" jdbcType="VARCHAR"/>
+        <result column="AC_ADAPTER" property="acAdapter" jdbcType="VARCHAR"/>
+        <result column="CELL" property="cell" jdbcType="VARCHAR"/>
+        <result column="CD_ROM" property="cdRom" jdbcType="VARCHAR"/>
+        <result column="FD" property="fd" jdbcType="VARCHAR"/>
+        <result column="START_PASSWORD" property="startPassword" jdbcType="VARCHAR"/>
+        <result column="IMPORT_DATA" property="importData" jdbcType="VARCHAR"/>
+        <result column="OTHER" property="other" jdbcType="VARCHAR"/>
+        <result column="MACHINE_FAULT" property="machineFault" jdbcType="VARCHAR"/>
+        <result column="FAULT_TYPE" property="faultType" jdbcType="CHAR"/>
+        <result column="OUTER_CHECK" property="outerCheck" jdbcType="VARCHAR"/>
+        <result column="BOOK_PRICE" property="bookPrice" jdbcType="INTEGER"/>
+        <result column="RCV_DATE" property="rcvDate" jdbcType="DATE"/>
+        <result column="LOGIN_STATUS" property="loginStatus" jdbcType="CHAR"/>
+    </resultMap>
+
+    <resultMap id="ProductToClientResultMap1" type="com.yx.emm504.Model.product.ProductToClient">
+        <result column="CONNECT_PEOPLE" property="connect_people"/>
+        <result column="UNIT_NAME" property="unit_name"/>
+        <result column="PRODUCT_TYPE" property="productType" jdbcType="VARCHAR"/>
+        <result column="MACHINE_RANK" property="machineRank" jdbcType="VARCHAR"/>
+        <result column="MACHINE_MODEL" property="machineModel" jdbcType="VARCHAR"/>
+        <result column="SERIAL_NUM" property="serialNum" jdbcType="VARCHAR"/>
+        <result column="SHORTAGE_PART" property="shortagePart" jdbcType="VARCHAR"/>
+        <result column="MACHINE_FAULT" property="machineFault" jdbcType="VARCHAR"/>
+    </resultMap>
+    
+    <select id="selectListWithClient" resultMap="ClientModelResultMap">
+		select * from client_info
+	</select>
+	
+	<!-- 查询维修信息 -->
+	<select id="selectListWithMaintain" resultMap="MaintainInfoResultMap">
+	  	select * from maintain_info
+	</select>
+  
+	<select id="selectListWithProduct" resultMap="ProductInfoResultMap">
+		select * from PRODUCT_INFO
+	</select>
+  
+    
+    
+    
+    
+    
+    
+    
+
+</mapper>
