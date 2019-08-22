@@ -2,10 +2,35 @@
 <div class="container-fluid">	
 	<ol class="breadcrumb">		
 		<li class="breadcrumb-item active">
-			<div>
-				<button type="button" class="btn btn-secondary" id="delete">删除</button>
-				<button type="button" class="btn btn-secondary" id="update">修改</button>			
-			</div>
+			<div class="box-header">
+          <div class="row">
+             <div class="col-md-9">
+	             <form class="form-inline" role="form">
+				  <div class="form-group">
+				    <label  for="name">维修状态</label>&nbsp&nbsp
+				    <select id="DepartmentSelection" class="form-control">
+				       <option value="0">未维修</option>
+				       <option value="1">已维修</option>
+				    </select>
+				  </div>&nbsp&nbsp&nbsp		 
+				  <div class="form-group">
+				    <label  for="name">检测日期</label>&nbsp&nbsp
+				    从<input type="date" class="form-control" id="startJoinDate" size="10" />&nbsp
+				    至<input type="date" class="form-control" id="endJoinDate" size="10" />&nbsp
+				  </div>
+				  <div class="form-group">
+				   <a href="#" class="btn btn-info" id="EmployeeSearchButton">检索</a>
+				  </div>
+				</form>
+             </div>
+             <div class="col-md-3 text-right">
+             	<a href="#" id="EmployeeAddLink" class="btn btn-info">添加</a> 
+             	<a href="#" id="EmployeeModifyLink" class="btn btn-info">修改</a> 
+            	<a href="#" id="EmployeeDeleteLink" class="btn btn-info">删除</a>
+              </div>
+          </div>
+          
+        </div>
 		</li>		
 		<div id="dialog_client"></div>
 	</ol>
