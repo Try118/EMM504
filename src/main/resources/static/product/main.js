@@ -35,7 +35,6 @@ $(function(){
 			// alert(clientId);
 		}
 	});
-
 	function reloadList()
 	{
 		$("table#ClientGrid").jqGrid('setGridParam',{postData:{zip_code:zip_code,client_property:client_property}}).trigger("reloadGrid");
